@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="王君吉,技术博客,逸才网络" />
+  <meta name="keywords" content="微信支付,thinkphp," />
 
 
 
@@ -84,15 +84,28 @@
 
 
 
-<meta name="description" content="不积跬步，无以至千里">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Ken's Blog">
-<meta property="og:url" content="http://yoursite.com/archives/2016/index.html">
+<meta name="description" content="在开发微信支付的过程中遇到不少坑，本文将按以下三个板块介绍微信JSAPI支付的主要流程及实现代码：
+
+微信公众平台配置
+微信商户配置
+thinkphp实现">
+<meta property="og:type" content="article">
+<meta property="og:title" content="thinkphp JSAPI微信支付实现">
+<meta property="og:url" content="http://yoursite.com/2016/05/11/thinkphp-微信支付/index.html">
 <meta property="og:site_name" content="Ken's Blog">
-<meta property="og:description" content="不积跬步，无以至千里">
+<meta property="og:description" content="在开发微信支付的过程中遇到不少坑，本文将按以下三个板块介绍微信JSAPI支付的主要流程及实现代码：
+
+微信公众平台配置
+微信商户配置
+thinkphp实现">
+<meta property="og:updated_time" content="2016-05-11T17:05:38.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Ken's Blog">
-<meta name="twitter:description" content="不积跬步，无以至千里">
+<meta name="twitter:title" content="thinkphp JSAPI微信支付实现">
+<meta name="twitter:description" content="在开发微信支付的过程中遇到不少坑，本文将按以下三个板块介绍微信JSAPI支付的主要流程及实现代码：
+
+微信公众平台配置
+微信商户配置
+thinkphp实现">
 
 
 
@@ -110,7 +123,7 @@
   };
 </script>
 
-  <title> 归档 | Ken's Blog </title>
+  <title> thinkphp JSAPI微信支付实现 | Ken's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -131,7 +144,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  page-archive  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -209,66 +222,139 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <span class="archive-move-on"></span>
-
-    <span class="archive-page-counter">
-      
-      
-      
-        
-      
-      嗯..! 目前共计 1 篇日志。 继续努力。
-    </span>
-
+  <div id="posts" class="posts-expand">
     
 
-      
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                thinkphp JSAPI微信支付实现
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-11T18:01:33+08:00" content="2016-05-11">
+              2016-05-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/thinkphp/" itemprop="url" rel="index">
+                    <span itemprop="name">thinkphp</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
       
       
 
       
+        <p>在开发微信支付的过程中遇到不少坑，本文将按以下三个板块介绍微信JSAPI支付的主要流程及实现代码：</p>
+<ol>
+<li>微信公众平台配置</li>
+<li>微信商户配置</li>
+<li>thinkphp实现<a id="more"></a>
+</li>
+</ol>
+<h4 id="下载微信支付官方php-SDK-解压"><a href="#下载微信支付官方php-SDK-解压" class="headerlink" title="下载微信支付官方php SDK 解压"></a>下载微信支付官方php SDK 解压</h4><p><a href="https://pay.weixin.qq.com/wiki/doc/api/download/WxpayAPI_php_v3.zip" target="_blank" rel="external">WxpayAPI_php_v3.zip</a><br>目录结构：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">WxpayAPI_php_v3</span><br><span class="line">├── cert</span><br><span class="line">├── doc</span><br><span class="line">├── example</span><br><span class="line">├── index.php</span><br><span class="line">├── lib</span><br><span class="line">└── logs</span><br></pre></td></tr></table></figure></p>
+<h4 id="修改部分源码供thinkphp引用"><a href="#修改部分源码供thinkphp引用" class="headerlink" title="修改部分源码供thinkphp引用"></a>修改部分源码供thinkphp引用</h4><p>1.重命名文件夹<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mv WxpayAPI_php_v3 WxPay</span><br></pre></td></tr></table></figure></p>
+<p>2.新建入口文件API.php<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vim API.php</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line">ini_set(<span class="string">'date.timezone'</span>,<span class="string">'Asia/Shanghai'</span>);</span><br><span class="line"><span class="keyword">require_once</span> dirname(<span class="keyword">__FILE__</span>).<span class="string">"/lib/WxPay.Api.php"</span>;</span><br><span class="line"><span class="keyword">require_once</span> dirname(<span class="keyword">__FILE__</span>).<span class="string">"/lib/WxPay.Notify.php"</span>;</span><br><span class="line"><span class="keyword">require_once</span> dirname(<span class="keyword">__FILE__</span>).<span class="string">"/example/WxPay.JsApiPay.php"</span>;</span><br><span class="line"><span class="keyword">require_once</span> dirname(<span class="keyword">__FILE__</span>).<span class="string">"/example/WxPay.MicroPay.php"</span>;</span><br><span class="line"><span class="keyword">require_once</span> dirname(<span class="keyword">__FILE__</span>).<span class="string">"/example/WxPay.NativePay.php"</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>3.检查API.php内所有引用的<code>require_once</code>，加上<code>dirname(__FILE__)</code>前缀</p>
+
+      
+    </div>
+
+    <div>
+      
         
-        <div class="collection-title">
-          <h2 class="archive-year motion-element" id="archive-year-2016">2016</h2>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/微信支付/" rel="tag">#微信支付</a>
+          
+            <a href="/tags/thinkphp/" rel="tag">#thinkphp</a>
+          
         </div>
       
-      
 
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/05/11/thinkphp-微信支付/" itemprop="url">
-              
-                <span itemprop="name">thinkphp JSAPI微信支付实现</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-05-11T18:01:33+08:00"
-              content="2016-05-11" >
-          05-11
-        </time>
-      </div>
-
-    </header>
+      
+      
+    </footer>
   </article>
 
 
 
-    
-
-  </section>
-
-  
-
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -276,6 +362,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -295,8 +385,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -366,6 +465,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#下载微信支付官方php-SDK-解压"><span class="nav-number">1.</span> <span class="nav-text">下载微信支付官方php SDK 解压</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改部分源码供thinkphp引用"><span class="nav-number">2.</span> <span class="nav-text">修改部分源码供thinkphp引用</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -469,11 +579,9 @@
 
 
   
-  
-    <script type="text/javascript" id="motion.page.archive">
-      $('.archive-year').velocity('transition.slideLeftIn');
-    </script>
-  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
 
 
   
