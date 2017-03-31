@@ -350,7 +350,7 @@ ThinkPHP实现
 <blockquote>
 <p>view调用JSAPI发起支付</p>
 </blockquote>
-<figure class="highlight html"><figcaption><span>Application/Home/View/Wxpay/index.html</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>支付测试<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">"callpay()"</span>&gt;</span><span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span><br><span class="line">    //调用微信JS api 支付</span><br><span class="line">    function jsApiCall() &#123;</span><br><span class="line">        WeixinJSBridge.invoke(</span><br><span class="line">            'getBrandWCPayRequest', &#123;$jsApiParameters&#125;,</span><br><span class="line">            function(res) &#123;</span><br><span class="line">                WeixinJSBridge.log(res.err_msg);</span><br><span class="line">                if (res.err_msg == 'get_brand_wcpay_request:cancel') &#123;</span><br><span class="line">                    alert("您已取消了此次支付");</span><br><span class="line">                    return;</span><br><span class="line">                &#125; else if (res.err_msg == 'get_brand_wcpay_request:fail') &#123;</span><br><span class="line">                    alert("支付失败");</span><br><span class="line">                    return;</span><br><span class="line">                &#125; else if (res.err_msg == 'get_brand_wcpay_request:ok') &#123;</span><br><span class="line">                    window.location.href = "/home/wxpay/success"; //跳转到支付成功页面</span><br><span class="line"></span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                    alert("未知错误" + res.error_msg);</span><br><span class="line">                    return;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">    function callpay() &#123;</span><br><span class="line">        if (typeof WeixinJSBridge == "undefined") &#123;</span><br><span class="line">            if (document.addEventListener) &#123;</span><br><span class="line">                document.addEventListener('WeixinJSBridgeReady', jsApiCall, false);</span><br><span class="line">            &#125; else if (document.attachEvent) &#123;</span><br><span class="line">                document.attachEvent('WeixinJSBridgeReady', jsApiCall);</span><br><span class="line">                document.attachEvent('onWeixinJSBridgeReady', jsApiCall);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            jsApiCall();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><figcaption><span>Application/Home/View/Wxpay/index.html</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>支付测试<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">"callpay()"</span>&gt;</span><span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span><br><span class="line">    <span class="comment">//调用微信JS api 支付</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">jsApiCall</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        WeixinJSBridge.invoke(</span><br><span class="line">            <span class="string">'getBrandWCPayRequest'</span>, &#123;$jsApiParameters&#125;,</span><br><span class="line">            <span class="function"><span class="keyword">function</span>(<span class="params">res</span>) </span>&#123;</span><br><span class="line">                WeixinJSBridge.log(res.err_msg);</span><br><span class="line">                <span class="keyword">if</span> (res.err_msg == <span class="string">'get_brand_wcpay_request:cancel'</span>) &#123;</span><br><span class="line">                    alert(<span class="string">"您已取消了此次支付"</span>);</span><br><span class="line">                    <span class="keyword">return</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (res.err_msg == <span class="string">'get_brand_wcpay_request:fail'</span>) &#123;</span><br><span class="line">                    alert(<span class="string">"支付失败"</span>);</span><br><span class="line">                    <span class="keyword">return</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (res.err_msg == <span class="string">'get_brand_wcpay_request:ok'</span>) &#123;</span><br><span class="line">                    <span class="built_in">window</span>.location.href = <span class="string">"/home/wxpay/success"</span>; <span class="comment">//跳转到支付成功页面</span></span><br><span class="line"></span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    alert(<span class="string">"未知错误"</span> + res.error_msg);</span><br><span class="line">                    <span class="keyword">return</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">callpay</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span> WeixinJSBridge == <span class="string">"undefined"</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">document</span>.addEventListener) &#123;</span><br><span class="line">                <span class="built_in">document</span>.addEventListener(<span class="string">'WeixinJSBridgeReady'</span>, jsApiCall, <span class="literal">false</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">document</span>.attachEvent) &#123;</span><br><span class="line">                <span class="built_in">document</span>.attachEvent(<span class="string">'WeixinJSBridgeReady'</span>, jsApiCall);</span><br><span class="line">                <span class="built_in">document</span>.attachEvent(<span class="string">'onWeixinJSBridgeReady'</span>, jsApiCall);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            jsApiCall();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>支付成功回调处理</p>
 </blockquote>
@@ -400,6 +400,20 @@ ThinkPHP实现
         </div>
       
 
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/05/20/Gulp插件使用（一）CSS处理/" rel="prev" title="Gulp插件使用（一）CSS处理">
+                Gulp插件使用（一）CSS处理 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
       
 
       
@@ -468,7 +482,7 @@ ThinkPHP实现
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">1</span>
+              <span class="site-state-item-count">7</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -485,7 +499,7 @@ ThinkPHP实现
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -553,7 +567,7 @@ ThinkPHP实现
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
