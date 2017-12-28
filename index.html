@@ -55,7 +55,7 @@
   
     
     
-    <link href="//fonts.useso.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
   
 
 
@@ -86,12 +86,13 @@
 
 <meta name="description" content="不积跬步，无以至千里">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Ken's Blog">
+<meta property="og:title" content="Junji&#39;s Blog">
 <meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="Ken's Blog">
+<meta property="og:site_name" content="Junji&#39;s Blog">
 <meta property="og:description" content="不积跬步，无以至千里">
+<meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Ken's Blog">
+<meta name="twitter:title" content="Junji&#39;s Blog">
 <meta name="twitter:description" content="不积跬步，无以至千里">
 
 
@@ -110,7 +111,7 @@
   };
 </script>
 
-  <title> Ken's Blog </title>
+  <title> Junji's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -143,7 +144,7 @@
   <div class="custom-logo-site-title">
     <a href="/"  class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <span class="site-title">Ken's Blog</span>
+      <span class="site-title">Junji's Blog</span>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -233,7 +234,642 @@
             
               
                 
-                <a class="post-title-link" href="/2017/02/13/ES6语法（五）数组的扩展/" itemprop="url">
+                <a class="post-title-link" href="/2017/12/28/python-stanford-corenlp安装及使用/" itemprop="url">
+                  python-stanford-corenlp安装及使用
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-12-28T14:31:42+08:00" content="2017-12-28">
+              2017-12-28
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/12/28/python-stanford-corenlp安装及使用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/12/28/python-stanford-corenlp安装及使用/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="1-新建工作目录"><a href="#1-新建工作目录" class="headerlink" title="1. 新建工作目录"></a>1. 新建工作目录</h3>   <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkdir workspace &amp;&amp; <span class="built_in">cd</span> <span class="variable">$_</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-创建virtualenv隔离环境"><a href="#2-创建virtualenv隔离环境" class="headerlink" title="2. 创建virtualenv隔离环境"></a>2. 创建virtualenv隔离环境</h3>   <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">virtualenv -p python3 .corenlp-env</span><br></pre></td></tr></table></figure>
+<h3 id="3-下载corenlp核心包及中文语言包"><a href="#3-下载corenlp核心包及中文语言包" class="headerlink" title="3. 下载corenlp核心包及中文语言包"></a>3. 下载corenlp核心包及中文语言包</h3><p>   <img src="/corenlp-download.png" alt="下载corenlp"><br>   <a href="http://nlp.stanford.edu/software/stanford-corenlp-full-2017-06-09.zip" target="_blank" rel="noopener">CoreNLP V3.8.0 核心包下载</a><br>   下载后解压<br>   <img src="/corenlp-download-2.png" alt="下载corenlp"><br>   <a href="http://nlp.stanford.edu/software/stanford-corenlp-full-2017-06-09.zip" target="_blank" rel="noopener">CoreNLP V3.8.0 中文语言包下载</a><br>   语言包下载后解压到stanford-corenlp-full-2017-06-09／根目录下</p>
+<h3 id="4-安装python-stanford-corenlp"><a href="#4-安装python-stanford-corenlp" class="headerlink" title="4. 安装python-stanford-corenlp"></a>4. 安装python-stanford-corenlp</h3>   <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install stanford-corenlp</span><br></pre></td></tr></table></figure>
+<h3 id="5-配置环境变量-CORENLP-HOME"><a href="#5-配置环境变量-CORENLP-HOME" class="headerlink" title="5. 配置环境变量 $CORENLP_HOME"></a>5. 配置环境变量 <code>$CORENLP_HOME</code></h3>   <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> CORENLP_HOME = &lt;corenlp核心包的解压路径&gt;</span><br></pre></td></tr></table></figure>
+<p>   Linux／OSX系统下，在命令行中输入该命令只在当前shell下有效，如果不想每次都输入的话建议加到shell的配置文件中去，如<code>~/.bashrc</code>,<code>~/.zshrc</code></p>
+<h3 id="6-修改Corenlp源码以支持中文分词"><a href="#6-修改Corenlp源码以支持中文分词" class="headerlink" title="6. 修改Corenlp源码以支持中文分词"></a>6. 修改Corenlp源码以支持中文分词</h3><p>找到corenlp包的安装位置，修改<code>client.py</code>的源码，本例中的virtualenv环境下为<code>.corenlp-env/lib/python3.6/site-packages/corenlp/client.py&#39;</code></p>
+<p>主要修改<code>CoreNLPClient</code>类中的初始化方法：<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, start_server=True, endpoint=<span class="string">"http://localhost:9000"</span>, timeout=<span class="number">5000</span>, annotators=DEFAULT_ANNOTATORS, properties=DEFAULT_PROPERTIES,allocate_mem=<span class="number">4</span>)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> start_server:</span><br><span class="line">        host, port = urlparse(endpoint).netloc.split(<span class="string">":"</span>)</span><br><span class="line">        <span class="keyword">assert</span> host == <span class="string">"localhost"</span>, <span class="string">"If starting a server, endpoint must be localhost"</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">assert</span> os.getenv(<span class="string">"CORENLP_HOME"</span>) <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>, <span class="string">"Please define $CORENLP_HOME where your CoreNLP Java checkout is"</span></span><br><span class="line">        start_cmd = <span class="string">"java -Xmx&#123;memory&#125;g -cp '&#123;corenlp_home&#125;/*'  edu.stanford.nlp.pipeline.StanfordCoreNLPServer -serverProperties StanfordCoreNLP-chinese.properties -port &#123;port&#125; -timeout &#123;timeout&#125;"</span>.format(</span><br><span class="line">            memory=allocate_mem,</span><br><span class="line">            corenlp_home=os.getenv(<span class="string">"CORENLP_HOME"</span>),</span><br><span class="line">            port=port,</span><br><span class="line">            timeout=timeout)</span><br><span class="line">        stop_cmd = <span class="keyword">None</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        start_cmd = stop_cmd = <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line">    super(CoreNLPClient, self).__init__(start_cmd, stop_cmd, endpoint)</span><br><span class="line">    self.default_annotators = annotators</span><br></pre></td></tr></table></figure></p>
+<p><code>java -Xmx{memory}g -cp &#39;{corenlp_home}/*&#39;  edu.stanford.nlp.pipeline.StanfordCoreNLPServer -serverProperties StanfordCoreNLP-chinese.properties -port {port} -timeout</code><br>启动命令中增加<code>allocate_mem</code>参数以支持动态分配内存，以及<code>-serverProperties StanfordCoreNLP-chinese.properties</code>增加中文语言支持</p>
+<h3 id="7-Corenlp具体调用方法参照Github"><a href="#7-Corenlp具体调用方法参照Github" class="headerlink" title="7.Corenlp具体调用方法参照Github"></a>7.Corenlp具体调用方法参照Github</h3><p><a href="https://github.com/stanfordnlp/python-stanford-corenlp" target="_blank" rel="noopener">python-stanford-corenlp</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/05/26/Webpack打包音频和视频文件/" itemprop="url">
+                  Webpack打包音频和视频文件
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-05-26T20:03:42+08:00" content="2017-05-26">
+              2017-05-26
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/05/26/Webpack打包音频和视频文件/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/26/Webpack打包音频和视频文件/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h4><p>在使用<code>webpack</code>打包时，发现只有图片能够打包输出到指定文件夹，而音频资源不能自动拷贝，需要作以下配置。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">audio</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">"../music/music.mp3"</span> <span class="attr">type</span>=<span class="string">"audio/mpeg"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">audio</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    test: <span class="regexp">/\.(wav|mp3)?$/</span>,  <span class="comment">//这里添加需要包含的后缀名</span></span><br><span class="line">    use: <span class="string">'file-loader?name=[path][name].[ext]&amp;mimetype=audio/mpeg'</span></span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<p>这里用到了｀HtmlWebpackPlugin｀插件，注意<code>html-loader</code>的queryString需要加上<code>source:src</code>，<code>attrs</code>的默认参数是<code>image:src</code>，故图片能够正常输出。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">plugins: [</span><br><span class="line">    <span class="keyword">new</span> HtmlWebpackPlugin(&#123;</span><br><span class="line">      filename: <span class="string">'index.html'</span>,</span><br><span class="line">      template: <span class="string">'!!html-loader?attrs[]=source:src&amp;attrs[]=img:src!app/views/index.html'</span></span><br><span class="line">    &#125;)</span><br><span class="line">  ]</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/05/03/前端面试题整理/" itemprop="url">
+                  前端面试题整理
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-05-03T12:33:22+08:00" content="2017-05-03">
+              2017-05-03
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/05/03/前端面试题整理/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/03/前端面试题整理/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="HTML篇"><a href="#HTML篇" class="headerlink" title="HTML篇"></a>HTML篇</h1><h1 id="CSS篇"><a href="#CSS篇" class="headerlink" title="CSS篇"></a>CSS篇</h1><h2 id="如何创建块级格式化上下文-block-formatting-context-BFC有什么用"><a href="#如何创建块级格式化上下文-block-formatting-context-BFC有什么用" class="headerlink" title="如何创建块级格式化上下文(block formatting context),BFC有什么用?"></a>如何创建块级格式化上下文(block formatting context),BFC有什么用?</h2><p> 创建规则：</p>
+<ol>
+<li>根元素</li>
+<li>浮动元素（<code>float</code>不是<code>none</code>）</li>
+<li>绝对定位元素（<code>position</code>取值为<code>absolute</code>或<code>fixed</code>）</li>
+<li><code>display</code>取值为<code>inline-block</code>,<code>table-cell</code>, <code>table-caption</code>,<code>flex</code>, <code>inline-flex</code>之一的元素</li>
+<li><code>overflow</code>不是<code>visible</code>的元素</li>
+</ol>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/05/03/前端面试题整理/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/04/27/Webpack实战——静态html框架＋实时刷新/" itemprop="url">
+                  Webpack实战——静态html框架＋实时刷新＋mock server
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-04-27T15:47:59+08:00" content="2017-04-27">
+              2017-04-27
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/04/27/Webpack实战——静态html框架＋实时刷新/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/27/Webpack实战——静态html框架＋实时刷新/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>本实例搭建了最基础的前端html+jquery+sass开发技术栈，实现实时刷新，并运用<code>json-sever</code>和<code>faker</code>搭建了mock Rest API 服务器，结合webpack-dev-server，提高开发效率，实现前后端分离。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/04/27/Webpack实战——静态html框架＋实时刷新/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/04/11/Webpack基础概念及常用插件介绍/" itemprop="url">
+                  Webpack基础概念及常用插件介绍
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-04-11T14:04:43+08:00" content="2017-04-11">
+              2017-04-11
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/04/11/Webpack基础概念及常用插件介绍/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/11/Webpack基础概念及常用插件介绍/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>Webpack 是一个前端资源加载/打包工具。它将根据模块的依赖关系进行静态分析，然后将这些模块按照指定的规则生成对应的静态资源。本文主要介绍Webpack一些基础概念、常用配置及插件的介绍，基于Webpack2.0实现。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/04/11/Webpack基础概念及常用插件介绍/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/04/11/ES6语法（六）函数的扩展/" itemprop="url">
+                  ES6语法（六）函数的扩展
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-04-11T13:19:45+08:00" content="2017-04-11">
+              2017-04-11
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/04/11/ES6语法（六）函数的扩展/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/11/ES6语法（六）函数的扩展/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="函数参数的默认值"><a href="#函数参数的默认值" class="headerlink" title="函数参数的默认值"></a>函数参数的默认值</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Point</span>(<span class="params">x = <span class="number">0</span>, y = <span class="number">0</span></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.x = x;</span><br><span class="line">  <span class="keyword">this</span>.y = y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p = <span class="keyword">new</span> Point();</span><br><span class="line">p <span class="comment">// &#123; x: 0, y: 0 &#125;</span></span><br></pre></td></tr></table></figure>
+<h3 id="与解构赋值默认值结合使用"><a href="#与解构赋值默认值结合使用" class="headerlink" title="与解构赋值默认值结合使用"></a>与解构赋值默认值结合使用</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">&#123;x, y = <span class="number">5</span>&#125;</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(x, y);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foo(&#123;&#125;) <span class="comment">// undefined, 5</span></span><br><span class="line">foo(&#123;<span class="attr">x</span>: <span class="number">1</span>&#125;) <span class="comment">// 1, 5</span></span><br><span class="line">foo(&#123;<span class="attr">x</span>: <span class="number">1</span>, <span class="attr">y</span>: <span class="number">2</span>&#125;) <span class="comment">// 1, 2</span></span><br><span class="line">foo() <span class="comment">// TypeError: Cannot read property 'x' of undefined</span></span><br></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/04/11/ES6语法（六）函数的扩展/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/04/01/ES6语法（五）数组的扩展/" itemprop="url">
                   ES6语法（五）数组的扩展
                 </a>
               
@@ -247,8 +883,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-02-13T13:58:03+08:00" content="2017-02-13">
-              2017-02-13
+            <time itemprop="dateCreated" datetime="2017-04-01T23:58:03+08:00" content="2017-04-01">
+              2017-04-01
             </time>
           </span>
 
@@ -258,8 +894,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2017/02/13/ES6语法（五）数组的扩展/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/13/ES6语法（五）数组的扩展/" itemprop="commentsCount"></span>
+                <a href="/2017/04/01/ES6语法（五）数组的扩展/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/01/ES6语法（五）数组的扩展/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -283,20 +919,12 @@
 
       
         
-          
-            <h3 id="Array-from"><a href="#Array-from" class="headerlink" title="Array.from()"></a>Array.from()</h3><p><code>Array.from</code>方法用于将两类对象转为真正的数组：类似数组的对象（array-like object）和可遍历（iterable）的对象（包括ES6新增的数据结构Set和Map）。<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> arrayLike = &#123;</span><br><span class="line">    <span class="string">'0'</span>: <span class="string">'a'</span>,</span><br><span class="line">    <span class="string">'1'</span>: <span class="string">'b'</span>,</span><br><span class="line">    <span class="string">'2'</span>: <span class="string">'c'</span>,</span><br><span class="line">    length: <span class="number">3</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ES5的写法</span></span><br><span class="line"><span class="keyword">var</span> arr1 = [].slice.call(arrayLike); <span class="comment">// ['a', 'b', 'c']</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ES6的写法</span></span><br><span class="line"><span class="keyword">let</span> arr2 = <span class="built_in">Array</span>.from(arrayLike); <span class="comment">// ['a', 'b', 'c']</span></span><br></pre></td></tr></table></figure></p>
-<p>实际应用中，常见的类似数组的对象是DOM操作返回的NodeList集合，以及函数内部的<code>arguments</code>对象。<code>Array.from</code>都可以将它们转为真正的数组。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// NodeList对象</span><br><span class="line">let ps = document.querySelectorAll(&apos;p&apos;);</span><br><span class="line">Array.from(ps).forEach(function (p) &#123;</span><br><span class="line">  console.log(p);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// arguments对象</span><br><span class="line">function foo() &#123;</span><br><span class="line">  var args = Array.from(arguments);</span><br><span class="line">  // ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>只要是部署了Iterator接口的数据结构，<code>Array.from</code>都能将其转为数组。<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Array</span>.from(<span class="string">'hello'</span>)</span><br><span class="line"><span class="comment">// ['h', 'e', 'l', 'l', 'o']</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> namesSet = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="string">'a'</span>, <span class="string">'b'</span>])</span><br><span class="line"><span class="built_in">Array</span>.from(namesSet) <span class="comment">// ['a', 'b']</span></span><br></pre></td></tr></table></figure></p>
-<p>扩展运算符（…）也可以将某些数据结构转为数组。<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// arguments对象</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> args = [...arguments];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// NodeList对象</span></span><br><span class="line">[...document.querySelectorAll(<span class="string">'div'</span>)]</span><br></pre></td></tr></table></figure></p>
-<p><code>Array.from</code>还可以接受第二个参数，作用类似于数组的<code>map</code>方法，用来对每个元素进行处理，将处理后的值放入返回的数组。<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Array</span>.from(arrayLike, x =&gt; x * x);</span><br><span class="line"><span class="comment">// 等同于</span></span><br><span class="line"><span class="built_in">Array</span>.from(arrayLike).map(x =&gt; x * x);</span><br><span class="line"></span><br><span class="line"><span class="built_in">Array</span>.from([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], (x) =&gt; x * x)</span><br><span class="line"><span class="comment">// [1, 4, 9]</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="Array-of"><a href="#Array-of" class="headerlink" title="Array.of()"></a>Array.of()</h3><p><code>Array.of</code>方法用于将一组值，转换为数组。<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Array</span>.of(<span class="number">3</span>, <span class="number">11</span>, <span class="number">8</span>) <span class="comment">// [3,11,8]</span></span><br><span class="line"><span class="built_in">Array</span>.of(<span class="number">3</span>) <span class="comment">// [3]</span></span><br><span class="line"><span class="built_in">Array</span>.of(<span class="number">3</span>).length <span class="comment">// 1</span></span><br></pre></td></tr></table></figure></p>
-<p><code>Array.of</code>基本上可以用来替代<code>Array()</code>或<code>new Array()</code>，并且不存在由于参数不同而导致的重载。它的行为非常统一。</p>
-<h3 id="copyWithin"><a href="#copyWithin" class="headerlink" title="copyWithin()"></a>copyWithin()</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Array</span>.prototype.copyWithin(target, start = <span class="number">0</span>, end = <span class="keyword">this</span>.length)</span><br></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 将3号位复制到0号位</span></span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>].copyWithin(<span class="number">0</span>, <span class="number">3</span>, <span class="number">4</span>)</span><br><span class="line"><span class="comment">// [4, 2, 3, 4, 5]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// -2相当于3号位，-1相当于4号位</span></span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>].copyWithin(<span class="number">0</span>, <span class="number">-2</span>, <span class="number">-1</span>)</span><br><span class="line"><span class="comment">// [4, 2, 3, 4, 5]</span></span><br></pre></td></tr></table></figure>
-<h3 id="find-findIndex"><a href="#find-findIndex" class="headerlink" title="find() findIndex()"></a>find() findIndex()</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">[<span class="number">1</span>, <span class="number">4</span>, <span class="number">-5</span>, <span class="number">10</span>].find((n) =&gt; n &lt; <span class="number">0</span>)</span><br><span class="line"><span class="comment">// -5</span></span><br><span class="line">[<span class="number">1</span>, <span class="number">5</span>, <span class="number">10</span>, <span class="number">15</span>].find(<span class="function"><span class="keyword">function</span>(<span class="params">value, index, arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> value &gt; <span class="number">9</span>;</span><br><span class="line">&#125;) <span class="comment">// 10</span></span><br><span class="line">[<span class="number">1</span>, <span class="number">5</span>, <span class="number">10</span>, <span class="number">15</span>].findIndex(<span class="function"><span class="keyword">function</span>(<span class="params">value, index, arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> value &gt; <span class="number">9</span>;</span><br><span class="line">&#125;) <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
-<h3 id="entries-keys-values"><a href="#entries-keys-values" class="headerlink" title="entries() keys() values()"></a>entries() keys() values()</h3><p>ES6提供三个新的方法——entries()，keys()和values()——用于遍历数组。它们都返回一个遍历器对象，可以用for…of循环进行遍历，唯一的区别是keys()是对键名的遍历、values()是对键值的遍历，entries()是对键值对的遍历。<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> index <span class="keyword">of</span> [<span class="string">'a'</span>, <span class="string">'b'</span>].keys()) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(index);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 0</span></span><br><span class="line"><span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> elem <span class="keyword">of</span> [<span class="string">'a'</span>, <span class="string">'b'</span>].values()) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(elem);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 'a'</span></span><br><span class="line"><span class="comment">// 'b'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> [index, elem] <span class="keyword">of</span> [<span class="string">'a'</span>, <span class="string">'b'</span>].entries()) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(index, elem);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 0 "a"</span></span><br><span class="line"><span class="comment">// 1 "b"</span></span><br></pre></td></tr></table></figure></p>
-
-          
+          <h3 id="Array-from"><a href="#Array-from" class="headerlink" title="Array.from()"></a>Array.from()</h3><p><code>Array.from</code>方法用于将两类对象转为真正的数组：类似数组的对象（array-like object）和可遍历（iterable）的对象（包括ES6新增的数据结构Set和Map）。<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> arrayLike = &#123;</span><br><span class="line">    <span class="string">'0'</span>: <span class="string">'a'</span>,</span><br><span class="line">    <span class="string">'1'</span>: <span class="string">'b'</span>,</span><br><span class="line">    <span class="string">'2'</span>: <span class="string">'c'</span>,</span><br><span class="line">    length: <span class="number">3</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ES5的写法</span></span><br><span class="line"><span class="keyword">var</span> arr1 = [].slice.call(arrayLike); <span class="comment">// ['a', 'b', 'c']</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ES6的写法</span></span><br><span class="line"><span class="keyword">let</span> arr2 = <span class="built_in">Array</span>.from(arrayLike); <span class="comment">// ['a', 'b', 'c']</span></span><br></pre></td></tr></table></figure></p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/04/01/ES6语法（五）数组的扩展/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -344,7 +972,7 @@
             
               
                 
-                <a class="post-title-link" href="/2017/02/13/ES6语法（四）数值的扩展/" itemprop="url">
+                <a class="post-title-link" href="/2017/04/01/ES6语法（四）数值的扩展/" itemprop="url">
                   ES6语法（四）数值的扩展
                 </a>
               
@@ -358,8 +986,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-02-13T10:53:08+08:00" content="2017-02-13">
-              2017-02-13
+            <time itemprop="dateCreated" datetime="2017-04-01T22:53:08+08:00" content="2017-04-01">
+              2017-04-01
             </time>
           </span>
 
@@ -369,8 +997,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2017/02/13/ES6语法（四）数值的扩展/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/13/ES6语法（四）数值的扩展/" itemprop="commentsCount"></span>
+                <a href="/2017/04/01/ES6语法（四）数值的扩展/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/01/ES6语法（四）数值的扩展/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -394,36 +1022,15 @@
 
       
         
-          
-            <h3 id="二进制和八进制表示法"><a href="#二进制和八进制表示法" class="headerlink" title="二进制和八进制表示法"></a>二进制和八进制表示法</h3><p>ES6 提供了二进制和八进制数值的新的写法，分别用前缀<code>0b</code>（或<code>0B</code>）和<code>0o</code>（或<code>0O</code>）表示。</p>
+          <h3 id="二进制和八进制表示法"><a href="#二进制和八进制表示法" class="headerlink" title="二进制和八进制表示法"></a>二进制和八进制表示法</h3><p>ES6 提供了二进制和八进制数值的新的写法，分别用前缀<code>0b</code>（或<code>0B</code>）和<code>0o</code>（或<code>0O</code>）表示。</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="number">0b111110111</span> === <span class="number">503</span> <span class="comment">// true</span></span><br><span class="line"><span class="number">0o767</span> === <span class="number">503</span> <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
 <p>从 ES5 开始，在严格模式之中，八进制就不再允许使用前缀<code>0</code>表示，ES6 进一步明确，要使用前缀<code>0o</code>表示。</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 非严格模式</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">0o11</span> === <span class="number">011</span>);</span><br><span class="line">&#125;)() <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 严格模式</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="meta">  'use strict'</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">0o11</span> === <span class="number">011</span>);</span><br><span class="line">&#125;)() <span class="comment">// Uncaught SyntaxError: Octal literals are not allowed in strict mode.</span></span><br></pre></td></tr></table></figure>
-<p>如果要将<code>0b</code>和<code>0o</code>前缀的字符串数值转为十进制，要使用Number方法。<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Number</span>(<span class="string">'0b111'</span>)  <span class="comment">// 7</span></span><br><span class="line"><span class="built_in">Number</span>(<span class="string">'0o10'</span>)  <span class="comment">// 8</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="Number-isFinite-Number-isNaN"><a href="#Number-isFinite-Number-isNaN" class="headerlink" title="Number.isFinite(), Number.isNaN()"></a>Number.isFinite(), Number.isNaN()</h3><p><code>Number.isFinite()</code>用来检查一个数值是否为有限的<br><code>Number.isNaN()</code>用来检查一个值是否为NaN</p>
-<p>它们与传统的全局方法<code>isFinite()</code>和<code>isNaN()</code>的区别在于，传统方法先调用<code>Number()</code>将非数值的值转为数值，再进行判断，而这两个新方法只对数值有效，非数值一律返回<code>false</code>。</p>
-<h3 id="Number-parseInt-Number-parseFloat"><a href="#Number-parseInt-Number-parseFloat" class="headerlink" title="Number.parseInt(), Number.parseFloat()"></a>Number.parseInt(), Number.parseFloat()</h3><p>ES6将全局方法parseInt()和parseFloat()，移植到Number对象上面，行为完全保持不变。这样做的目的，是逐步减少全局性方法，使得语言逐步模块化。<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// ES5的写法</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">'12.34'</span>) <span class="comment">// 12</span></span><br><span class="line"><span class="built_in">parseFloat</span>(<span class="string">'123.45#'</span>) <span class="comment">// 123.45</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ES6的写法</span></span><br><span class="line"><span class="built_in">Number</span>.parseInt(<span class="string">'12.34'</span>) <span class="comment">// 12</span></span><br><span class="line"><span class="built_in">Number</span>.parseFloat(<span class="string">'123.45#'</span>) <span class="comment">// 123.45</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="Number-isInteger"><a href="#Number-isInteger" class="headerlink" title="Number.isInteger()"></a>Number.isInteger()</h3><p><code>Number.isInteger()</code>用来判断一个值是否为整数。需要注意的是，在JavaScript内部，整数和浮点数是同样的储存方法，所以3和3.0被视为同一个值。</p>
-<h3 id="Number-EPSILON"><a href="#Number-EPSILON" class="headerlink" title="Number.EPSILON"></a>Number.EPSILON</h3><p>ES6在Number对象上面，新增一个极小的常量<code>Number.EPSILON</code>。引入一个这么小的量的目的，在于为浮点数计算，设置一个误差范围。JavaScript浮点数计算是不精确的。<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="number">0.1</span> + <span class="number">0.2</span></span><br><span class="line"><span class="comment">// 0.30000000000000004</span></span><br><span class="line"></span><br><span class="line"><span class="number">0.1</span> + <span class="number">0.2</span> - <span class="number">0.3</span></span><br><span class="line"><span class="comment">// 5.551115123125783e-17</span></span><br><span class="line"></span><br><span class="line"><span class="number">5.551115123125783e-17</span> &lt; <span class="built_in">Number</span>.EPSILON</span><br><span class="line"><span class="comment">// true</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="Number-isSafeInteger"><a href="#Number-isSafeInteger" class="headerlink" title="Number.isSafeInteger()"></a>Number.isSafeInteger()</h3><p>JavaScript能够准确表示的整数范围在<code>-2^53</code>到<code>2^53</code>之间（不含两个端点），超过这个范围，无法精确表示这个值。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Math</span>.pow(<span class="number">2</span>, <span class="number">53</span>) <span class="comment">// 9007199254740992</span></span><br><span class="line"></span><br><span class="line"><span class="number">9007199254740992</span>  <span class="comment">// 9007199254740992</span></span><br><span class="line"><span class="number">9007199254740993</span>  <span class="comment">// 9007199254740992</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Math</span>.pow(<span class="number">2</span>, <span class="number">53</span>) === <span class="built_in">Math</span>.pow(<span class="number">2</span>, <span class="number">53</span>) + <span class="number">1</span></span><br><span class="line"><span class="comment">// true</span></span><br></pre></td></tr></table></figure>
-<p>ES6引入了<code>Number.MAX_SAFE_INTEGER</code>和<code>Number.MIN_SAFE_INTEGER</code>这两个常量，用来表示这个范围的上下限。</p>
-<h3 id="Math-对象的扩展"><a href="#Math-对象的扩展" class="headerlink" title="Math 对象的扩展"></a>Math 对象的扩展</h3><h4 id="Math-trunc"><a href="#Math-trunc" class="headerlink" title="Math.trunc()"></a>Math.trunc()</h4><p><code>Math.trunc</code>方法用于去除一个数的小数部分，返回整数部分。对于非数值，<code>Math.trunc</code>内部使用<code>Number</code>方法将其先转为数值。对于空值和无法截取整数的值，返回<code>NaN</code>。</p>
-<h4 id="Math-sign"><a href="#Math-sign" class="headerlink" title="Math.sign()"></a>Math.sign()</h4><p><code>Math.sign</code>方法用来判断一个数到底是正数、负数、还是零。<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Math</span>.sign(<span class="number">-5</span>) <span class="comment">// -1</span></span><br><span class="line"><span class="built_in">Math</span>.sign(<span class="number">5</span>) <span class="comment">// +1</span></span><br><span class="line"><span class="built_in">Math</span>.sign(<span class="number">0</span>) <span class="comment">// +0</span></span><br><span class="line"><span class="built_in">Math</span>.sign(<span class="number">-0</span>) <span class="comment">// -0</span></span><br><span class="line"><span class="built_in">Math</span>.sign(<span class="literal">NaN</span>) <span class="comment">// NaN</span></span><br><span class="line"><span class="built_in">Math</span>.sign(<span class="string">'foo'</span>); <span class="comment">// NaN</span></span><br><span class="line"><span class="built_in">Math</span>.sign();      <span class="comment">// NaN</span></span><br></pre></td></tr></table></figure></p>
-<h4 id="Math-cbrt"><a href="#Math-cbrt" class="headerlink" title="Math.cbrt()"></a>Math.cbrt()</h4><p><code>Math.cbrt</code>方法用于计算一个数的立方根。</p>
-<h4 id="Math-hypot"><a href="#Math-hypot" class="headerlink" title="Math.hypot()"></a>Math.hypot()</h4><p><code>Math.hypot</code>方法返回所有参数的平方和的平方根。</p>
-<h4 id="Math-expm1"><a href="#Math-expm1" class="headerlink" title="Math.expm1()"></a>Math.expm1()</h4><p><code>Math.expm1(x)</code>返回ex - 1，即Math.exp(x) - 1。</p>
-<h4 id="Math-log1p"><a href="#Math-log1p" class="headerlink" title="Math.log1p()"></a>Math.log1p()</h4><p><code>Math.log1p(x)</code>方法返回1 + x的自然对数，即Math.log(1 + x)。如果x小于-1，返回<code>NaN</code>。</p>
-<h4 id="Math-log10"><a href="#Math-log10" class="headerlink" title="Math.log10()"></a>Math.log10()</h4><p><code>Math.log10(x)</code>返回以10为底的x的对数。如果x小于0，则返回<code>NaN</code>。</p>
-<h4 id="Math-log2"><a href="#Math-log2" class="headerlink" title="Math.log2()"></a>Math.log2()</h4><p><code>Math.log2(x)</code>返回以2为底的x的对数。如果x小于0，则返回<code>NaN</code>。</p>
-<h4 id="Math-sinh-x"><a href="#Math-sinh-x" class="headerlink" title="Math.sinh(x)"></a><code>Math.sinh(x)</code></h4><p>返回x的双曲正弦（hyperbolic sine）</p>
-<h4 id="Math-cosh-x"><a href="#Math-cosh-x" class="headerlink" title="Math.cosh(x)"></a><code>Math.cosh(x)</code></h4><p>返回x的双曲余弦（hyperbolic cosine）</p>
-<h4 id="Math-tanh-x"><a href="#Math-tanh-x" class="headerlink" title="Math.tanh(x)"></a><code>Math.tanh(x)</code></h4><p>返回x的双曲正切（hyperbolic tangent）</p>
-<h4 id="Math-asinh-x"><a href="#Math-asinh-x" class="headerlink" title="Math.asinh(x)"></a><code>Math.asinh(x)</code></h4><p>返回x的反双曲正弦（inverse hyperbolic sine）</p>
-<h4 id="Math-acosh-x"><a href="#Math-acosh-x" class="headerlink" title="Math.acosh(x)"></a><code>Math.acosh(x)</code></h4><p>返回x的反双曲余弦（inverse hyperbolic cosine）</p>
-<h4 id="Math-atanh-x"><a href="#Math-atanh-x" class="headerlink" title="Math.atanh(x)"></a><code>Math.atanh(x)</code></h4><p>返回x的反双曲正切（inverse hyperbolic tangent）</p>
-<h3 id="指数运算符"><a href="#指数运算符" class="headerlink" title="指数运算符**"></a>指数运算符<code>**</code></h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="number">2</span> ** <span class="number">2</span> <span class="comment">// 4</span></span><br><span class="line"><span class="number">2</span> ** <span class="number">3</span> <span class="comment">// 8</span></span><br><span class="line">指数运算符可以与等号结合，形成一个新的赋值运算符<span class="string">`**=`</span>。</span><br></pre></td></tr></table></figure>
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/04/01/ES6语法（四）数值的扩展/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -471,7 +1078,7 @@
             
               
                 
-                <a class="post-title-link" href="/2016/07/02/ES6语法（三）字符串的扩展/" itemprop="url">
+                <a class="post-title-link" href="/2017/04/01/ES6语法（三）字符串的扩展/" itemprop="url">
                   ES6语法（三）字符串的扩展
                 </a>
               
@@ -485,8 +1092,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-02T01:09:25+08:00" content="2016-07-02">
-              2016-07-02
+            <time itemprop="dateCreated" datetime="2017-04-01T22:09:25+08:00" content="2017-04-01">
+              2017-04-01
             </time>
           </span>
 
@@ -496,8 +1103,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/07/02/ES6语法（三）字符串的扩展/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/02/ES6语法（三）字符串的扩展/" itemprop="commentsCount"></span>
+                <a href="/2017/04/01/ES6语法（三）字符串的扩展/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/01/ES6语法（三）字符串的扩展/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -521,17 +1128,15 @@
 
       
         
-          
-            <h3 id="includes-startsWith-endsWith"><a href="#includes-startsWith-endsWith" class="headerlink" title="includes(),startsWith(),endsWith()"></a>includes(),startsWith(),endsWith()</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="string">'Hello world!'</span>;</span><br><span class="line"></span><br><span class="line">s.startsWith(<span class="string">'Hello'</span>) <span class="comment">// true</span></span><br><span class="line">s.endsWith(<span class="string">'!'</span>) <span class="comment">// true</span></span><br><span class="line">s.includes(<span class="string">'o'</span>) <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+          <h3 id="includes-startsWith-endsWith"><a href="#includes-startsWith-endsWith" class="headerlink" title="includes(),startsWith(),endsWith()"></a>includes(),startsWith(),endsWith()</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="string">'Hello world!'</span>;</span><br><span class="line"></span><br><span class="line">s.startsWith(<span class="string">'Hello'</span>) <span class="comment">// true</span></span><br><span class="line">s.endsWith(<span class="string">'!'</span>) <span class="comment">// true</span></span><br><span class="line">s.includes(<span class="string">'o'</span>) <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
 <h3 id="repeat"><a href="#repeat" class="headerlink" title="repeat()"></a>repeat()</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="string">"x"</span>.repeat(<span class="number">3</span>) <span class="comment">// "xxx"</span></span><br></pre></td></tr></table></figure>
 <h3 id="padStart-padRight"><a href="#padStart-padRight" class="headerlink" title="padStart(),padRight()"></a>padStart(),padRight()</h3><h4 id="补全位数"><a href="#补全位数" class="headerlink" title="补全位数"></a>补全位数</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="string">'x'</span>.padStart(<span class="number">5</span>, <span class="string">'ab'</span>) <span class="comment">// 'ababx'</span></span><br><span class="line"><span class="string">'x'</span>.padStart(<span class="number">4</span>, <span class="string">'ab'</span>) <span class="comment">// 'abax'</span></span><br><span class="line"></span><br><span class="line"><span class="string">'x'</span>.padEnd(<span class="number">5</span>, <span class="string">'ab'</span>) <span class="comment">// 'xabab'</span></span><br><span class="line"><span class="string">'x'</span>.padEnd(<span class="number">4</span>, <span class="string">'ab'</span>) <span class="comment">// 'xaba'</span></span><br><span class="line"></span><br><span class="line"><span class="string">'1'</span>.padStart(<span class="number">10</span>, <span class="string">'0'</span>) <span class="comment">// "0000000001"</span></span><br><span class="line"><span class="string">'12'</span>.padStart(<span class="number">10</span>, <span class="string">'0'</span>) <span class="comment">// "0000000012"</span></span><br><span class="line"><span class="string">'123456'</span>.padStart(<span class="number">10</span>, <span class="string">'0'</span>) <span class="comment">// "0000123456"</span></span><br></pre></td></tr></table></figure>
 <h4 id="提示字符串格式"><a href="#提示字符串格式" class="headerlink" title="提示字符串格式"></a>提示字符串格式</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="string">'12'</span>.padStart(<span class="number">10</span>, <span class="string">'YYYY-MM-DD'</span>) <span class="comment">// "YYYY-MM-12"</span></span><br><span class="line"><span class="string">'09-12'</span>.padStart(<span class="number">10</span>, <span class="string">'YYYY-MM-DD'</span>) <span class="comment">// "YYYY-09-12"</span></span><br></pre></td></tr></table></figure>
-<h3 id="模版字符串"><a href="#模版字符串" class="headerlink" title="模版字符串"></a>模版字符串</h3><p>模板字符串（template string）是增强版的字符串，用反引号（`）标识。它可以当作普通字符串使用，也可以用来定义多行字符串，或者在字符串中嵌入变量。模板字符串中嵌入变量，需要将变量名写在${}之中。<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">"Bob"</span>, time = <span class="string">"today"</span>;</span><br><span class="line"><span class="string">`Hello <span class="subst">$&#123;name&#125;</span>, how are you <span class="subst">$&#123;time&#125;</span>?`</span></span><br></pre></td></tr></table></figure></p>
-<p>所有模板字符串的空格和换行，都是被保留的，比如<ul>标签前面会有一个换行。如果你不想要这个换行，可以使用trim方法消除它。</ul></p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$(<span class="string">'#list'</span>).html(<span class="string">`</span><br><span class="line">&lt;ul&gt;</span><br><span class="line">  &lt;li&gt;first&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;second&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br><span class="line">`</span>.trim());</span><br></pre></td></tr></table></figure>
-<p>大括号内部可以放入任意的JavaScript表达式，可以进行运算，引用对象属性，以及调用函数。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">var</span> y = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line"><span class="string">`<span class="subst">$&#123;x&#125;</span> + <span class="subst">$&#123;y&#125;</span> = <span class="subst">$&#123;x + y&#125;</span>`</span></span><br><span class="line"><span class="comment">// "1 + 2 = 3"</span></span><br><span class="line"></span><br><span class="line"><span class="string">`<span class="subst">$&#123;x&#125;</span> + <span class="subst">$&#123;y * 2&#125;</span> = <span class="subst">$&#123;x + y * 2&#125;</span>`</span></span><br><span class="line"><span class="comment">// "1 + 4 = 5"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj = &#123;x: <span class="number">1</span>, y: <span class="number">2</span>&#125;;</span><br><span class="line"><span class="string">`<span class="subst">$&#123;obj.x + obj.y&#125;</span>`</span></span><br><span class="line"><span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/04/01/ES6语法（三）字符串的扩展/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -579,7 +1184,7 @@
             
               
                 
-                <a class="post-title-link" href="/2016/07/01/ES6语法（二）变量的解构赋值/" itemprop="url">
+                <a class="post-title-link" href="/2017/04/01/ES6语法（二）变量的解构赋值/" itemprop="url">
                   ES6语法（二）变量的解构赋值
                 </a>
               
@@ -593,8 +1198,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-01T11:05:53+08:00" content="2016-07-01">
-              2016-07-01
+            <time itemprop="dateCreated" datetime="2017-04-01T21:05:53+08:00" content="2017-04-01">
+              2017-04-01
             </time>
           </span>
 
@@ -604,8 +1209,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/07/01/ES6语法（二）变量的解构赋值/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/01/ES6语法（二）变量的解构赋值/" itemprop="commentsCount"></span>
+                <a href="/2017/04/01/ES6语法（二）变量的解构赋值/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/01/ES6语法（二）变量的解构赋值/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -638,348 +1243,7 @@
 <li>用途</li>
 </ol>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/07/01/ES6语法（二）变量的解构赋值/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/30/ES6语法（一）let和const命令/" itemprop="url">
-                  ES6语法（一）let和const命令
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-30T20:36:01+08:00" content="2016-06-30">
-              2016-06-30
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/30/ES6语法（一）let和const命令/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/30/ES6语法（一）let和const命令/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <ol>
-<li>let命令</li>
-<li>块级作用域</li>
-<li>const命令</li>
-<li>全局对象的属性</li>
-</ol>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/06/30/ES6语法（一）let和const命令/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/20/Gulp插件使用（一）CSS处理/" itemprop="url">
-                  Gulp插件使用（一）CSS处理
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-20T13:00:23+08:00" content="2016-05-20">
-              2016-05-20
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/05/20/Gulp插件使用（一）CSS处理/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/20/Gulp插件使用（一）CSS处理/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <ol>
-<li>gulp-sass sass预处理</li>
-<li>gulp-autoprefixer 添加浏览器前缀</li>
-<li>gulp-cssnano css压缩
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/05/20/Gulp插件使用（一）CSS处理/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/11/thinkphp-微信支付/" itemprop="url">
-                  ThinkPHP JSAPI微信支付实现
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-11T18:01:33+08:00" content="2016-05-11">
-              2016-05-11
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/ThinkPHP/" itemprop="url" rel="index">
-                    <span itemprop="name">ThinkPHP</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/05/11/thinkphp-微信支付/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/11/thinkphp-微信支付/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>在开发微信支付的过程中遇到不少坑，本文将按以下三个板块介绍微信JSAPI支付的主要流程及实现代码：</p>
-<ol>
-<li>微信公众平台配置</li>
-<li>微信商户配置</li>
-<li>ThinkPHP实现</li>
-<li>其他注意事项
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/05/11/thinkphp-微信支付/#more" rel="contents">
+            <a class="btn" href="/2017/04/01/ES6语法（二）变量的解构赋值/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1012,6 +1276,10 @@
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -1050,7 +1318,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-count">13</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1067,7 +1335,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

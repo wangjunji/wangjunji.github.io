@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="gulp," />
+  <meta name="keywords" content="ES6," />
 
 
 
@@ -84,18 +84,18 @@
 
 
 
-<meta name="description" content="gulp-sass sass预处理 gulp-autoprefixer 添加浏览器前缀 gulp-cssnano css压缩">
-<meta name="keywords" content="gulp">
+<meta name="description" content="includes(),startsWith(),endsWith()var s = &apos;Hello world!&apos;;s.startsWith(&apos;Hello&apos;) // trues.endsWith(&apos;!&apos;) // trues.includes(&apos;o&apos;) // true repeat()&quot;x&quot;.repeat(3) // &quot;xxx&quot; padStart(),padRight()补全位数&apos;x&apos;.padStar">
+<meta name="keywords" content="ES6">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Gulp插件使用（一）CSS处理">
-<meta property="og:url" content="http://yoursite.com/2016/05/20/Gulp插件使用（一）CSS处理/index.html">
+<meta property="og:title" content="ES6语法（三）字符串的扩展">
+<meta property="og:url" content="http://yoursite.com/2017/04/01/ES6语法（三）字符串的扩展/index.html">
 <meta property="og:site_name" content="Junji&#39;s Blog">
-<meta property="og:description" content="gulp-sass sass预处理 gulp-autoprefixer 添加浏览器前缀 gulp-cssnano css压缩">
+<meta property="og:description" content="includes(),startsWith(),endsWith()var s = &apos;Hello world!&apos;;s.startsWith(&apos;Hello&apos;) // trues.endsWith(&apos;!&apos;) // trues.includes(&apos;o&apos;) // true repeat()&quot;x&quot;.repeat(3) // &quot;xxx&quot; padStart(),padRight()补全位数&apos;x&apos;.padStar">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2016-06-30T12:27:45.000Z">
+<meta property="og:updated_time" content="2017-04-11T05:07:14.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Gulp插件使用（一）CSS处理">
-<meta name="twitter:description" content="gulp-sass sass预处理 gulp-autoprefixer 添加浏览器前缀 gulp-cssnano css压缩">
+<meta name="twitter:title" content="ES6语法（三）字符串的扩展">
+<meta name="twitter:description" content="includes(),startsWith(),endsWith()var s = &apos;Hello world!&apos;;s.startsWith(&apos;Hello&apos;) // trues.endsWith(&apos;!&apos;) // trues.includes(&apos;o&apos;) // true repeat()&quot;x&quot;.repeat(3) // &quot;xxx&quot; padStart(),padRight()补全位数&apos;x&apos;.padStar">
 
 
 
@@ -113,7 +113,7 @@
   };
 </script>
 
-  <title> Gulp插件使用（一）CSS处理 | Junji's Blog </title>
+  <title> ES6语法（三）字符串的扩展 | Junji's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -233,7 +233,7 @@
             
             
               
-                Gulp插件使用（一）CSS处理
+                ES6语法（三）字符串的扩展
               
             
           </h1>
@@ -245,8 +245,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-20T13:00:23+08:00" content="2016-05-20">
-              2016-05-20
+            <time itemprop="dateCreated" datetime="2017-04-01T22:09:25+08:00" content="2017-04-01">
+              2017-04-01
             </time>
           </span>
 
@@ -256,8 +256,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/05/20/Gulp插件使用（一）CSS处理/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/20/Gulp插件使用（一）CSS处理/" itemprop="commentsCount"></span>
+                <a href="/2017/04/01/ES6语法（三）字符串的扩展/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/01/ES6语法（三）字符串的扩展/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -280,15 +280,16 @@
       
 
       
-        <ol>
-<li>gulp-sass sass预处理</li>
-<li>gulp-autoprefixer 添加浏览器前缀</li>
-<li>gulp-cssnano css压缩<a id="more"></a>
-</li>
-</ol>
-<h4 id="gulp-sass"><a href="#gulp-sass" class="headerlink" title="gulp-sass"></a>gulp-sass</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>);</span><br><span class="line"><span class="keyword">var</span> sass = <span class="built_in">require</span>(<span class="string">'gulp-sass'</span>);</span><br><span class="line"> </span><br><span class="line">gulp.task(<span class="string">'sass'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> gulp.src(<span class="string">'./sass/**/*.scss'</span>)</span><br><span class="line">    .pipe(sass().on(<span class="string">'error'</span>, sass.logError))</span><br><span class="line">    .pipe(gulp.dest(<span class="string">'./css'</span>));</span><br><span class="line">&#125;);</span><br><span class="line"> </span><br><span class="line">gulp.task(<span class="string">'sass:watch'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  gulp.watch(<span class="string">'./sass/**/*.scss'</span>, [<span class="string">'sass'</span>]);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h4 id="gulp-autoprefixer"><a href="#gulp-autoprefixer" class="headerlink" title="gulp-autoprefixer"></a>gulp-autoprefixer</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>);</span><br><span class="line"><span class="keyword">var</span> autoprefixer = <span class="built_in">require</span>(<span class="string">'gulp-autoprefixer'</span>);</span><br><span class="line"> </span><br><span class="line">gulp.task(<span class="string">'default'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> gulp.src(<span class="string">'src/app.css'</span>)</span><br><span class="line">		.pipe(autoprefixer(&#123;</span><br><span class="line">			browsers: [<span class="string">'last 2 versions'</span>],</span><br><span class="line">			cascade: <span class="literal">false</span></span><br><span class="line">		&#125;))</span><br><span class="line">		.pipe(gulp.dest(<span class="string">'dist'</span>));</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h4 id="gulp-cssnano"><a href="#gulp-cssnano" class="headerlink" title="gulp-cssnano"></a>gulp-cssnano</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>);</span><br><span class="line"><span class="keyword">var</span> cssnano = <span class="built_in">require</span>(<span class="string">'gulp-cssnano'</span>);</span><br><span class="line"> </span><br><span class="line">gulp.task(<span class="string">'default'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> gulp.src(<span class="string">'./main.css'</span>)</span><br><span class="line">        .pipe(cssnano())</span><br><span class="line">        .pipe(gulp.dest(<span class="string">'./out'</span>));</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+        <h3 id="includes-startsWith-endsWith"><a href="#includes-startsWith-endsWith" class="headerlink" title="includes(),startsWith(),endsWith()"></a>includes(),startsWith(),endsWith()</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="string">'Hello world!'</span>;</span><br><span class="line"></span><br><span class="line">s.startsWith(<span class="string">'Hello'</span>) <span class="comment">// true</span></span><br><span class="line">s.endsWith(<span class="string">'!'</span>) <span class="comment">// true</span></span><br><span class="line">s.includes(<span class="string">'o'</span>) <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<h3 id="repeat"><a href="#repeat" class="headerlink" title="repeat()"></a>repeat()</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="string">"x"</span>.repeat(<span class="number">3</span>) <span class="comment">// "xxx"</span></span><br></pre></td></tr></table></figure>
+<h3 id="padStart-padRight"><a href="#padStart-padRight" class="headerlink" title="padStart(),padRight()"></a>padStart(),padRight()</h3><h4 id="补全位数"><a href="#补全位数" class="headerlink" title="补全位数"></a>补全位数</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="string">'x'</span>.padStart(<span class="number">5</span>, <span class="string">'ab'</span>) <span class="comment">// 'ababx'</span></span><br><span class="line"><span class="string">'x'</span>.padStart(<span class="number">4</span>, <span class="string">'ab'</span>) <span class="comment">// 'abax'</span></span><br><span class="line"></span><br><span class="line"><span class="string">'x'</span>.padEnd(<span class="number">5</span>, <span class="string">'ab'</span>) <span class="comment">// 'xabab'</span></span><br><span class="line"><span class="string">'x'</span>.padEnd(<span class="number">4</span>, <span class="string">'ab'</span>) <span class="comment">// 'xaba'</span></span><br><span class="line"></span><br><span class="line"><span class="string">'1'</span>.padStart(<span class="number">10</span>, <span class="string">'0'</span>) <span class="comment">// "0000000001"</span></span><br><span class="line"><span class="string">'12'</span>.padStart(<span class="number">10</span>, <span class="string">'0'</span>) <span class="comment">// "0000000012"</span></span><br><span class="line"><span class="string">'123456'</span>.padStart(<span class="number">10</span>, <span class="string">'0'</span>) <span class="comment">// "0000123456"</span></span><br></pre></td></tr></table></figure>
+<h4 id="提示字符串格式"><a href="#提示字符串格式" class="headerlink" title="提示字符串格式"></a>提示字符串格式</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="string">'12'</span>.padStart(<span class="number">10</span>, <span class="string">'YYYY-MM-DD'</span>) <span class="comment">// "YYYY-MM-12"</span></span><br><span class="line"><span class="string">'09-12'</span>.padStart(<span class="number">10</span>, <span class="string">'YYYY-MM-DD'</span>) <span class="comment">// "YYYY-09-12"</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="模版字符串"><a href="#模版字符串" class="headerlink" title="模版字符串"></a>模版字符串</h3><p>模板字符串（template string）是增强版的字符串，用反引号（`）标识。它可以当作普通字符串使用，也可以用来定义多行字符串，或者在字符串中嵌入变量。模板字符串中嵌入变量，需要将变量名写在${}之中。<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">"Bob"</span>, time = <span class="string">"today"</span>;</span><br><span class="line"><span class="string">`Hello <span class="subst">$&#123;name&#125;</span>, how are you <span class="subst">$&#123;time&#125;</span>?`</span></span><br></pre></td></tr></table></figure></p>
+<p>所有模板字符串的空格和换行，都是被保留的，比如<ul>标签前面会有一个换行。如果你不想要这个换行，可以使用trim方法消除它。</ul></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">$(<span class="string">'#list'</span>).html(<span class="string">`</span></span><br><span class="line"><span class="string">&lt;ul&gt;</span></span><br><span class="line"><span class="string">  &lt;li&gt;first&lt;/li&gt;</span></span><br><span class="line"><span class="string">  &lt;li&gt;second&lt;/li&gt;</span></span><br><span class="line"><span class="string">&lt;/ul&gt;</span></span><br><span class="line"><span class="string">`</span>.trim());</span><br></pre></td></tr></table></figure>
+<p>大括号内部可以放入任意的JavaScript表达式，可以进行运算，引用对象属性，以及调用函数。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">var</span> y = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line"><span class="string">`<span class="subst">$&#123;x&#125;</span> + <span class="subst">$&#123;y&#125;</span> = <span class="subst">$&#123;x + y&#125;</span>`</span></span><br><span class="line"><span class="comment">// "1 + 2 = 3"</span></span><br><span class="line"></span><br><span class="line"><span class="string">`<span class="subst">$&#123;x&#125;</span> + <span class="subst">$&#123;y * <span class="number">2</span>&#125;</span> = <span class="subst">$&#123;x + y * <span class="number">2</span>&#125;</span>`</span></span><br><span class="line"><span class="comment">// "1 + 4 = 5"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj = &#123;<span class="attr">x</span>: <span class="number">1</span>, <span class="attr">y</span>: <span class="number">2</span>&#125;;</span><br><span class="line"><span class="string">`<span class="subst">$&#123;obj.x + obj.y&#125;</span>`</span></span><br><span class="line"><span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -325,7 +326,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/gulp/" rel="tag">#gulp</a>
+            <a href="/tags/ES6/" rel="tag">#ES6</a>
           
         </div>
       
@@ -334,16 +335,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/05/11/thinkphp-微信支付/" rel="next" title="ThinkPHP JSAPI微信支付实现">
-                <i class="fa fa-chevron-left"></i> ThinkPHP JSAPI微信支付实现
+              <a href="/2017/04/01/ES6语法（二）变量的解构赋值/" rel="next" title="ES6语法（二）变量的解构赋值">
+                <i class="fa fa-chevron-left"></i> ES6语法（二）变量的解构赋值
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/04/01/ES6语法（一）let和const命令/" rel="prev" title="ES6语法（一）let和const命令">
-                ES6语法（一）let和const命令 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/04/01/ES6语法（四）数值的扩展/" rel="prev" title="ES6语法（四）数值的扩展">
+                ES6语法（四）数值的扩展 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -370,8 +371,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/05/20/Gulp插件使用（一）CSS处理/"
-           data-title="Gulp插件使用（一）CSS处理" data-url="http://yoursite.com/2016/05/20/Gulp插件使用（一）CSS处理/">
+      <div class="ds-thread" data-thread-key="2017/04/01/ES6语法（三）字符串的扩展/"
+           data-title="ES6语法（三）字符串的扩展" data-url="http://yoursite.com/2017/04/01/ES6语法（三）字符串的扩展/">
       </div>
     
   </div>
@@ -482,7 +483,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#gulp-sass"><span class="nav-number">1.</span> <span class="nav-text">gulp-sass</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#gulp-autoprefixer"><span class="nav-number">2.</span> <span class="nav-text">gulp-autoprefixer</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#gulp-cssnano"><span class="nav-number">3.</span> <span class="nav-text">gulp-cssnano</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#includes-startsWith-endsWith"><span class="nav-number">1.</span> <span class="nav-text">includes(),startsWith(),endsWith()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#repeat"><span class="nav-number">2.</span> <span class="nav-text">repeat()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#padStart-padRight"><span class="nav-number">3.</span> <span class="nav-text">padStart(),padRight()</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#补全位数"><span class="nav-number">3.1.</span> <span class="nav-text">补全位数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#提示字符串格式"><span class="nav-number">3.2.</span> <span class="nav-text">提示字符串格式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模版字符串"><span class="nav-number">4.</span> <span class="nav-text">模版字符串</span></a></li></ol></div>
             
           </div>
         </section>

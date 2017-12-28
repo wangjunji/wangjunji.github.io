@@ -1,0 +1,660 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="ES6," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="二进制和八进制表示法ES6 提供了二进制和八进制数值的新的写法，分别用前缀0b（或0B）和0o（或0O）表示。 0b111110111 === 503 // true0o767 === 503 // true 从 ES5 开始，在严格模式之中，八进制就不再允许使用前缀0表示，ES6 进一步明确，要使用前缀0o表示。 // 非严格模式(function()&amp;#123;  console.log(0o">
+<meta name="keywords" content="ES6">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6语法（四）数值的扩展">
+<meta property="og:url" content="http://yoursite.com/2017/04/01/ES6语法（四）数值的扩展/index.html">
+<meta property="og:site_name" content="Junji&#39;s Blog">
+<meta property="og:description" content="二进制和八进制表示法ES6 提供了二进制和八进制数值的新的写法，分别用前缀0b（或0B）和0o（或0O）表示。 0b111110111 === 503 // true0o767 === 503 // true 从 ES5 开始，在严格模式之中，八进制就不再允许使用前缀0表示，ES6 进一步明确，要使用前缀0o表示。 // 非严格模式(function()&amp;#123;  console.log(0o">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-04-11T05:07:20.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ES6语法（四）数值的扩展">
+<meta name="twitter:description" content="二进制和八进制表示法ES6 提供了二进制和八进制数值的新的写法，分别用前缀0b（或0B）和0o（或0O）表示。 0b111110111 === 503 // true0o767 === 503 // true 从 ES5 开始，在严格模式之中，八进制就不再允许使用前缀0表示，ES6 进一步明确，要使用前缀0o表示。 // 非严格模式(function()&amp;#123;  console.log(0o">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> ES6语法（四）数值的扩展 | Junji's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Junji's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">全栈工程师修炼之路</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                ES6语法（四）数值的扩展
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-04-01T22:53:08+08:00" content="2017-04-01">
+              2017-04-01
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/04/01/ES6语法（四）数值的扩展/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/01/ES6语法（四）数值的扩展/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="二进制和八进制表示法"><a href="#二进制和八进制表示法" class="headerlink" title="二进制和八进制表示法"></a>二进制和八进制表示法</h3><p>ES6 提供了二进制和八进制数值的新的写法，分别用前缀<code>0b</code>（或<code>0B</code>）和<code>0o</code>（或<code>0O</code>）表示。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="number">0b111110111</span> === <span class="number">503</span> <span class="comment">// true</span></span><br><span class="line"><span class="number">0o767</span> === <span class="number">503</span> <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p>从 ES5 开始，在严格模式之中，八进制就不再允许使用前缀<code>0</code>表示，ES6 进一步明确，要使用前缀<code>0o</code>表示。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 非严格模式</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">0o11</span> === <span class="number">011</span>);</span><br><span class="line">&#125;)() <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 严格模式</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="meta">  'use strict'</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">0o11</span> === <span class="number">011</span>);</span><br><span class="line">&#125;)() <span class="comment">// Uncaught SyntaxError: Octal literals are not allowed in strict mode.</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>如果要将<code>0b</code>和<code>0o</code>前缀的字符串数值转为十进制，要使用Number方法。<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Number</span>(<span class="string">'0b111'</span>)  <span class="comment">// 7</span></span><br><span class="line"><span class="built_in">Number</span>(<span class="string">'0o10'</span>)  <span class="comment">// 8</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="Number-isFinite-Number-isNaN"><a href="#Number-isFinite-Number-isNaN" class="headerlink" title="Number.isFinite(), Number.isNaN()"></a>Number.isFinite(), Number.isNaN()</h3><p><code>Number.isFinite()</code>用来检查一个数值是否为有限的<br><code>Number.isNaN()</code>用来检查一个值是否为NaN</p>
+<p>它们与传统的全局方法<code>isFinite()</code>和<code>isNaN()</code>的区别在于，传统方法先调用<code>Number()</code>将非数值的值转为数值，再进行判断，而这两个新方法只对数值有效，非数值一律返回<code>false</code>。</p>
+<h3 id="Number-parseInt-Number-parseFloat"><a href="#Number-parseInt-Number-parseFloat" class="headerlink" title="Number.parseInt(), Number.parseFloat()"></a>Number.parseInt(), Number.parseFloat()</h3><p>ES6将全局方法parseInt()和parseFloat()，移植到Number对象上面，行为完全保持不变。这样做的目的，是逐步减少全局性方法，使得语言逐步模块化。<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// ES5的写法</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">'12.34'</span>) <span class="comment">// 12</span></span><br><span class="line"><span class="built_in">parseFloat</span>(<span class="string">'123.45#'</span>) <span class="comment">// 123.45</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ES6的写法</span></span><br><span class="line"><span class="built_in">Number</span>.parseInt(<span class="string">'12.34'</span>) <span class="comment">// 12</span></span><br><span class="line"><span class="built_in">Number</span>.parseFloat(<span class="string">'123.45#'</span>) <span class="comment">// 123.45</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="Number-isInteger"><a href="#Number-isInteger" class="headerlink" title="Number.isInteger()"></a>Number.isInteger()</h3><p><code>Number.isInteger()</code>用来判断一个值是否为整数。需要注意的是，在JavaScript内部，整数和浮点数是同样的储存方法，所以3和3.0被视为同一个值。</p>
+<h3 id="Number-EPSILON"><a href="#Number-EPSILON" class="headerlink" title="Number.EPSILON"></a>Number.EPSILON</h3><p>ES6在Number对象上面，新增一个极小的常量<code>Number.EPSILON</code>。引入一个这么小的量的目的，在于为浮点数计算，设置一个误差范围。JavaScript浮点数计算是不精确的。<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="number">0.1</span> + <span class="number">0.2</span></span><br><span class="line"><span class="comment">// 0.30000000000000004</span></span><br><span class="line"></span><br><span class="line"><span class="number">0.1</span> + <span class="number">0.2</span> - <span class="number">0.3</span></span><br><span class="line"><span class="comment">// 5.551115123125783e-17</span></span><br><span class="line"></span><br><span class="line"><span class="number">5.551115123125783e-17</span> &lt; <span class="built_in">Number</span>.EPSILON</span><br><span class="line"><span class="comment">// true</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="Number-isSafeInteger"><a href="#Number-isSafeInteger" class="headerlink" title="Number.isSafeInteger()"></a>Number.isSafeInteger()</h3><p>JavaScript能够准确表示的整数范围在<code>-2^53</code>到<code>2^53</code>之间（不含两个端点），超过这个范围，无法精确表示这个值。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Math</span>.pow(<span class="number">2</span>, <span class="number">53</span>) <span class="comment">// 9007199254740992</span></span><br><span class="line"></span><br><span class="line"><span class="number">9007199254740992</span>  <span class="comment">// 9007199254740992</span></span><br><span class="line"><span class="number">9007199254740993</span>  <span class="comment">// 9007199254740992</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Math</span>.pow(<span class="number">2</span>, <span class="number">53</span>) === <span class="built_in">Math</span>.pow(<span class="number">2</span>, <span class="number">53</span>) + <span class="number">1</span></span><br><span class="line"><span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p>ES6引入了<code>Number.MAX_SAFE_INTEGER</code>和<code>Number.MIN_SAFE_INTEGER</code>这两个常量，用来表示这个范围的上下限。</p>
+<h3 id="Math-对象的扩展"><a href="#Math-对象的扩展" class="headerlink" title="Math 对象的扩展"></a>Math 对象的扩展</h3><h4 id="Math-trunc"><a href="#Math-trunc" class="headerlink" title="Math.trunc()"></a>Math.trunc()</h4><p><code>Math.trunc</code>方法用于去除一个数的小数部分，返回整数部分。对于非数值，<code>Math.trunc</code>内部使用<code>Number</code>方法将其先转为数值。对于空值和无法截取整数的值，返回<code>NaN</code>。</p>
+<h4 id="Math-sign"><a href="#Math-sign" class="headerlink" title="Math.sign()"></a>Math.sign()</h4><p><code>Math.sign</code>方法用来判断一个数到底是正数、负数、还是零。<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Math</span>.sign(<span class="number">-5</span>) <span class="comment">// -1</span></span><br><span class="line"><span class="built_in">Math</span>.sign(<span class="number">5</span>) <span class="comment">// +1</span></span><br><span class="line"><span class="built_in">Math</span>.sign(<span class="number">0</span>) <span class="comment">// +0</span></span><br><span class="line"><span class="built_in">Math</span>.sign(<span class="number">-0</span>) <span class="comment">// -0</span></span><br><span class="line"><span class="built_in">Math</span>.sign(<span class="literal">NaN</span>) <span class="comment">// NaN</span></span><br><span class="line"><span class="built_in">Math</span>.sign(<span class="string">'foo'</span>); <span class="comment">// NaN</span></span><br><span class="line"><span class="built_in">Math</span>.sign();      <span class="comment">// NaN</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="Math-cbrt"><a href="#Math-cbrt" class="headerlink" title="Math.cbrt()"></a>Math.cbrt()</h4><p><code>Math.cbrt</code>方法用于计算一个数的立方根。</p>
+<h4 id="Math-hypot"><a href="#Math-hypot" class="headerlink" title="Math.hypot()"></a>Math.hypot()</h4><p><code>Math.hypot</code>方法返回所有参数的平方和的平方根。</p>
+<h4 id="Math-expm1"><a href="#Math-expm1" class="headerlink" title="Math.expm1()"></a>Math.expm1()</h4><p><code>Math.expm1(x)</code>返回ex - 1，即Math.exp(x) - 1。</p>
+<h4 id="Math-log1p"><a href="#Math-log1p" class="headerlink" title="Math.log1p()"></a>Math.log1p()</h4><p><code>Math.log1p(x)</code>方法返回1 + x的自然对数，即Math.log(1 + x)。如果x小于-1，返回<code>NaN</code>。</p>
+<h4 id="Math-log10"><a href="#Math-log10" class="headerlink" title="Math.log10()"></a>Math.log10()</h4><p><code>Math.log10(x)</code>返回以10为底的x的对数。如果x小于0，则返回<code>NaN</code>。</p>
+<h4 id="Math-log2"><a href="#Math-log2" class="headerlink" title="Math.log2()"></a>Math.log2()</h4><p><code>Math.log2(x)</code>返回以2为底的x的对数。如果x小于0，则返回<code>NaN</code>。</p>
+<h4 id="Math-sinh-x"><a href="#Math-sinh-x" class="headerlink" title="Math.sinh(x)"></a><code>Math.sinh(x)</code></h4><p>返回x的双曲正弦（hyperbolic sine）</p>
+<h4 id="Math-cosh-x"><a href="#Math-cosh-x" class="headerlink" title="Math.cosh(x)"></a><code>Math.cosh(x)</code></h4><p>返回x的双曲余弦（hyperbolic cosine）</p>
+<h4 id="Math-tanh-x"><a href="#Math-tanh-x" class="headerlink" title="Math.tanh(x)"></a><code>Math.tanh(x)</code></h4><p>返回x的双曲正切（hyperbolic tangent）</p>
+<h4 id="Math-asinh-x"><a href="#Math-asinh-x" class="headerlink" title="Math.asinh(x)"></a><code>Math.asinh(x)</code></h4><p>返回x的反双曲正弦（inverse hyperbolic sine）</p>
+<h4 id="Math-acosh-x"><a href="#Math-acosh-x" class="headerlink" title="Math.acosh(x)"></a><code>Math.acosh(x)</code></h4><p>返回x的反双曲余弦（inverse hyperbolic cosine）</p>
+<h4 id="Math-atanh-x"><a href="#Math-atanh-x" class="headerlink" title="Math.atanh(x)"></a><code>Math.atanh(x)</code></h4><p>返回x的反双曲正切（inverse hyperbolic tangent）</p>
+<h3 id="指数运算符"><a href="#指数运算符" class="headerlink" title="指数运算符**"></a>指数运算符<code>**</code></h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="number">2</span> ** <span class="number">2</span> <span class="comment">// 4</span></span><br><span class="line"><span class="number">2</span> ** <span class="number">3</span> <span class="comment">// 8</span></span><br><span class="line">指数运算符可以与等号结合，形成一个新的赋值运算符<span class="string">`**=`</span>。</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechatpay.jpg" alt="王君吉 WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ES6/" rel="tag">#ES6</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/01/ES6语法（三）字符串的扩展/" rel="next" title="ES6语法（三）字符串的扩展">
+                <i class="fa fa-chevron-left"></i> ES6语法（三）字符串的扩展
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/04/01/ES6语法（五）数组的扩展/" rel="prev" title="ES6语法（五）数组的扩展">
+                ES6语法（五）数组的扩展 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/04/01/ES6语法（四）数值的扩展/"
+           data-title="ES6语法（四）数值的扩展" data-url="http://yoursite.com/2017/04/01/ES6语法（四）数值的扩展/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="王君吉" />
+          <p class="site-author-name" itemprop="name">王君吉</p>
+          <p class="site-description motion-element" itemprop="description">不积跬步，无以至千里</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/wangjunji" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/1863673592" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#二进制和八进制表示法"><span class="nav-number">1.</span> <span class="nav-text">二进制和八进制表示法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Number-isFinite-Number-isNaN"><span class="nav-number">2.</span> <span class="nav-text">Number.isFinite(), Number.isNaN()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Number-parseInt-Number-parseFloat"><span class="nav-number">3.</span> <span class="nav-text">Number.parseInt(), Number.parseFloat()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Number-isInteger"><span class="nav-number">4.</span> <span class="nav-text">Number.isInteger()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Number-EPSILON"><span class="nav-number">5.</span> <span class="nav-text">Number.EPSILON</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Number-isSafeInteger"><span class="nav-number">6.</span> <span class="nav-text">Number.isSafeInteger()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Math-对象的扩展"><span class="nav-number">7.</span> <span class="nav-text">Math 对象的扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Math-trunc"><span class="nav-number">7.1.</span> <span class="nav-text">Math.trunc()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Math-sign"><span class="nav-number">7.2.</span> <span class="nav-text">Math.sign()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Math-cbrt"><span class="nav-number">7.3.</span> <span class="nav-text">Math.cbrt()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Math-hypot"><span class="nav-number">7.4.</span> <span class="nav-text">Math.hypot()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Math-expm1"><span class="nav-number">7.5.</span> <span class="nav-text">Math.expm1()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Math-log1p"><span class="nav-number">7.6.</span> <span class="nav-text">Math.log1p()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Math-log10"><span class="nav-number">7.7.</span> <span class="nav-text">Math.log10()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Math-log2"><span class="nav-number">7.8.</span> <span class="nav-text">Math.log2()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Math-sinh-x"><span class="nav-number">7.9.</span> <span class="nav-text">Math.sinh(x)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Math-cosh-x"><span class="nav-number">7.10.</span> <span class="nav-text">Math.cosh(x)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Math-tanh-x"><span class="nav-number">7.11.</span> <span class="nav-text">Math.tanh(x)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Math-asinh-x"><span class="nav-number">7.12.</span> <span class="nav-text">Math.asinh(x)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Math-acosh-x"><span class="nav-number">7.13.</span> <span class="nav-text">Math.acosh(x)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Math-atanh-x"><span class="nav-number">7.14.</span> <span class="nav-text">Math.atanh(x)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#指数运算符"><span class="nav-number">8.</span> <span class="nav-text">指数运算符**</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">王君吉</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"wangjunji"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -84,16 +84,17 @@
 
 
 
-<meta name="description" content="不积跬步，无以至千里">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Junji&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/tags/ThinkPHP/index.html">
+<meta name="description" content="问题描述在使用webpack打包时，发现只有图片能够打包输出到指定文件夹，而音频资源不能自动拷贝，需要作以下配置。 &amp;lt;audio&amp;gt;    &amp;lt;source src=&quot;../music/music.mp3&quot; type=&quot;audio/mpeg&quot;&amp;gt;&amp;lt;/audio&amp;gt; &amp;#123;    test: /\.(wav|mp3)?$/,  //这里添加需要包含的后缀名    u">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Webpack打包音频和视频文件">
+<meta property="og:url" content="http://yoursite.com/2017/05/26/Webpack打包音频和视频文件/index.html">
 <meta property="og:site_name" content="Junji&#39;s Blog">
-<meta property="og:description" content="不积跬步，无以至千里">
+<meta property="og:description" content="问题描述在使用webpack打包时，发现只有图片能够打包输出到指定文件夹，而音频资源不能自动拷贝，需要作以下配置。 &amp;lt;audio&amp;gt;    &amp;lt;source src=&quot;../music/music.mp3&quot; type=&quot;audio/mpeg&quot;&amp;gt;&amp;lt;/audio&amp;gt; &amp;#123;    test: /\.(wav|mp3)?$/,  //这里添加需要包含的后缀名    u">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-05-26T12:17:56.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Junji&#39;s Blog">
-<meta name="twitter:description" content="不积跬步，无以至千里">
+<meta name="twitter:title" content="Webpack打包音频和视频文件">
+<meta name="twitter:description" content="问题描述在使用webpack打包时，发现只有图片能够打包输出到指定文件夹，而音频资源不能自动拷贝，需要作以下配置。 &amp;lt;audio&amp;gt;    &amp;lt;source src=&quot;../music/music.mp3&quot; type=&quot;audio/mpeg&quot;&amp;gt;&amp;lt;/audio&amp;gt; &amp;#123;    test: /\.(wav|mp3)?$/,  //这里添加需要包含的后缀名    u">
 
 
 
@@ -111,7 +112,7 @@
   };
 </script>
 
-  <title> 标签: ThinkPHP | Junji's Blog </title>
+  <title> Webpack打包音频和视频文件 | Junji's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -132,7 +133,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -210,46 +211,146 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        ThinkPHP
-        <small>标签</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Webpack打包音频和视频文件
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-05-26T20:03:42+08:00" content="2017-05-26">
+              2017-05-26
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/05/26/Webpack打包音频和视频文件/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/26/Webpack打包音频和视频文件/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <h4 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h4><p>在使用<code>webpack</code>打包时，发现只有图片能够打包输出到指定文件夹，而音频资源不能自动拷贝，需要作以下配置。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">audio</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">"../music/music.mp3"</span> <span class="attr">type</span>=<span class="string">"audio/mpeg"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">audio</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    test: <span class="regexp">/\.(wav|mp3)?$/</span>,  <span class="comment">//这里添加需要包含的后缀名</span></span><br><span class="line">    use: <span class="string">'file-loader?name=[path][name].[ext]&amp;mimetype=audio/mpeg'</span></span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<p>这里用到了｀HtmlWebpackPlugin｀插件，注意<code>html-loader</code>的queryString需要加上<code>source:src</code>，<code>attrs</code>的默认参数是<code>image:src</code>，故图片能够正常输出。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">plugins: [</span><br><span class="line">    <span class="keyword">new</span> HtmlWebpackPlugin(&#123;</span><br><span class="line">      filename: <span class="string">'index.html'</span>,</span><br><span class="line">      template: <span class="string">'!!html-loader?attrs[]=source:src&amp;attrs[]=img:src!app/views/index.html'</span></span><br><span class="line">    &#125;)</span><br><span class="line">  ]</span><br></pre></td></tr></table></figure>
 
-      <h1 class="post-title">
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/2016/05/11/thinkphp-微信支付/" itemprop="url">
-              
-                <span itemprop="name">ThinkPHP JSAPI微信支付实现</span>
-              
-            </a>
+      
+    </div>
+
+    <div>
+      
         
-      </h1>
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechatpay.jpg" alt="王君吉 WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+    </div>
+  </div>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-05-11T18:01:33+08:00"
-              content="2016-05-11" >
-          05-11
-        </time>
-      </div>
 
-    </header>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/03/前端面试题整理/" rel="next" title="前端面试题整理">
+                <i class="fa fa-chevron-left"></i> 前端面试题整理
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/28/python-stanford-corenlp安装及使用/" rel="prev" title="python-stanford-corenlp安装及使用">
+                python-stanford-corenlp安装及使用 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -257,6 +358,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/05/26/Webpack打包音频和视频文件/"
+           data-title="Webpack打包音频和视频文件" data-url="http://yoursite.com/2017/05/26/Webpack打包音频和视频文件/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -276,8 +385,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -347,6 +465,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#问题描述"><span class="nav-number">1.</span> <span class="nav-text">问题描述</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -450,6 +579,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 

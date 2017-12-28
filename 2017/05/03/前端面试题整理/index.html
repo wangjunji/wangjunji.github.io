@@ -1,0 +1,698 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="interview," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="HTML篇CSS篇如何创建块级格式化上下文(block formatting context),BFC有什么用? 创建规则：  根元素 浮动元素（float不是none） 绝对定位元素（position取值为absolute或fixed） display取值为inline-block,table-cell, table-caption,flex, inline-flex之一的元素 overflow">
+<meta name="keywords" content="interview">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端面试题整理">
+<meta property="og:url" content="http://yoursite.com/2017/05/03/前端面试题整理/index.html">
+<meta property="og:site_name" content="Junji&#39;s Blog">
+<meta property="og:description" content="HTML篇CSS篇如何创建块级格式化上下文(block formatting context),BFC有什么用? 创建规则：  根元素 浮动元素（float不是none） 绝对定位元素（position取值为absolute或fixed） display取值为inline-block,table-cell, table-caption,flex, inline-flex之一的元素 overflow">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-05-26T11:57:56.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端面试题整理">
+<meta name="twitter:description" content="HTML篇CSS篇如何创建块级格式化上下文(block formatting context),BFC有什么用? 创建规则：  根元素 浮动元素（float不是none） 绝对定位元素（position取值为absolute或fixed） display取值为inline-block,table-cell, table-caption,flex, inline-flex之一的元素 overflow">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 前端面试题整理 | Junji's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Junji's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">全栈工程师修炼之路</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                前端面试题整理
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-05-03T12:33:22+08:00" content="2017-05-03">
+              2017-05-03
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/05/03/前端面试题整理/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/03/前端面试题整理/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="HTML篇"><a href="#HTML篇" class="headerlink" title="HTML篇"></a>HTML篇</h1><h1 id="CSS篇"><a href="#CSS篇" class="headerlink" title="CSS篇"></a>CSS篇</h1><h2 id="如何创建块级格式化上下文-block-formatting-context-BFC有什么用"><a href="#如何创建块级格式化上下文-block-formatting-context-BFC有什么用" class="headerlink" title="如何创建块级格式化上下文(block formatting context),BFC有什么用?"></a>如何创建块级格式化上下文(block formatting context),BFC有什么用?</h2><p> 创建规则：</p>
+<ol>
+<li>根元素</li>
+<li>浮动元素（<code>float</code>不是<code>none</code>）</li>
+<li>绝对定位元素（<code>position</code>取值为<code>absolute</code>或<code>fixed</code>）</li>
+<li><code>display</code>取值为<code>inline-block</code>,<code>table-cell</code>, <code>table-caption</code>,<code>flex</code>, <code>inline-flex</code>之一的元素</li>
+<li><code>overflow</code>不是<code>visible</code>的元素</li>
+</ol>
+<a id="more"></a>
+<p>作用:</p>
+<ol>
+<li>可以包含浮动元素</li>
+<li>不被浮动元素覆盖</li>
+<li>阻止父子元素的margin折叠</li>
+</ol>
+<h1 id="JS篇"><a href="#JS篇" class="headerlink" title="JS篇"></a>JS篇</h1><h2 id="跨域通信"><a href="#跨域通信" class="headerlink" title="跨域通信"></a>跨域通信</h2><p>同源策略:</p>
+<ol>
+<li>协议相同</li>
+<li>域名相同</li>
+<li>端口相同</li>
+</ol>
+<p>跨域通信通常有以下方法:</p>
+<ol>
+<li>jsonp</li>
+<li>document.domain (只适用于主域相同子域不同的情况)</li>
+<li>window.name (2M大小限制,仅支持字符串)</li>
+<li>postMessage</li>
+<li>cors (Access-Control-Allow-Origin: *)</li>
+<li>内部服务器代理</li>
+</ol>
+<h2 id="什么闭包-闭包有什么用"><a href="#什么闭包-闭包有什么用" class="headerlink" title="什么闭包,闭包有什么用"></a>什么闭包,闭包有什么用</h2><p>闭包是在某个作用域内定义的函数，它可以访问这个作用域内的所有变量。闭包作用域链通常包括三个部分：</p>
+<ol>
+<li>函数本身作用域</li>
+<li>闭包定义时的作用域</li>
+<li>全局作用域</li>
+</ol>
+<p>闭包常见用途：</p>
+<ol>
+<li>创建特权方法用于访问控制</li>
+<li>事件处理程序及回调</li>
+</ol>
+<h2 id="XMLHttpRequest通用属性和方法"><a href="#XMLHttpRequest通用属性和方法" class="headerlink" title="XMLHttpRequest通用属性和方法"></a>XMLHttpRequest通用属性和方法</h2><ol>
+<li><code>readyState</code></li>
+</ol>
+<ul>
+<li>UNSENT(0)</li>
+<li>OPENED(1)</li>
+<li>HEADERS_RECEIVED(2)</li>
+<li>LOADING(3)</li>
+<li>DONE(4)</li>
+</ul>
+<ol>
+<li><code>onreadystatechange</code> readyState改变时调用的函数</li>
+<li><code>status</code> 服务器返回的HTTP状态码（如，200， 404）</li>
+<li><code>statusText</code> 服务器返回的HTTP状态信息（如，OK，No Content）</li>
+<li><code>responseText</code> 作为字符串形式的来自服务器的完整响应</li>
+<li><code>responseXML</code>  Document对象，表示服务器的响应解析成的XML文档</li>
+<li><code>abort()</code> 取消异步HTTP请求</li>
+<li><code>getAllResponseHeaders()</code> 返回一个字符串，包含响应中服务器发送的全部HTTP报头。每个报头都是一个用冒号分隔开的名/值对，并且使用一个回车/换行来分隔报头行</li>
+<li><code>getResponseHeader(headerName)</code> 返回headName对应的报头值</li>
+<li><code>open(method, url, asynchronous [, user, password])</code> 初始化准备发送到服务器上的请求。method是HTTP方法，不区分大小写；url是请求发送的相对或绝对URL；asynchronous表示请求是否异步；user和password提供身份验证</li>
+<li><code>setRequestHeader(name, value)</code> 设置HTTP报头</li>
+<li><code>send(body)</code> 对服务器请求进行初始化。参数body包含请求的主体部分，对于POST请求为键值对字符串；对于GET请求，为null</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> xmlHttp;  </span><br><span class="line">  </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">AjaxFunction</span>(<span class="params"></span>)</span>&#123;  </span><br><span class="line">    createXMLHttpRequest();  </span><br><span class="line">    <span class="keyword">if</span>(xmlHttp!=<span class="literal">null</span>)&#123;  </span><br><span class="line">        xmlHttp.onreadystatechange = callBack;  </span><br><span class="line">        xmlHttp.open(<span class="string">"get/post"</span>,<span class="string">"URL"</span>,<span class="literal">true</span>/<span class="literal">false</span>);  </span><br><span class="line">        xmlHttp.send(<span class="literal">null</span>);  </span><br><span class="line">    &#125;     </span><br><span class="line">&#125;     </span><br><span class="line">  </span><br><span class="line"><span class="comment">//实例化XMLHttpRequest对象  </span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createXMLHttpRequest</span>(<span class="params"></span>)</span>&#123;  </span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">window</span>.XMLHttpRequest)&#123;  </span><br><span class="line">        xmlHttp = <span class="keyword">new</span> XMLHttpRequest();   </span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">window</span>.ActiveXObject)&#123;  </span><br><span class="line">        xmlHttp = <span class="keyword">new</span> ActiveXObject(<span class="string">"Microsoft.XMLHTTP"</span>);  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"><span class="comment">//指定响应函数  </span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">callBack</span>(<span class="params"></span>)</span>&#123;  </span><br><span class="line">    <span class="keyword">if</span>(xmlHttp.readyState==<span class="number">4</span>)&#123;  </span><br><span class="line">        <span class="keyword">if</span>(xmlHttp.status==<span class="number">200</span>)&#123;  </span><br><span class="line">            <span class="comment">//do something with xmlHttp.responseText;  </span></span><br><span class="line">            <span class="built_in">console</span>.log(xmlHttp.responseText); </span><br><span class="line">        &#125;     </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="cookie及其操作"><a href="#cookie及其操作" class="headerlink" title="cookie及其操作"></a>cookie及其操作</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setCookie</span>(<span class="params">cname, cvalue, exdays</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> d = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">    d.setTime(d.getTime() + (exdays*<span class="number">24</span>*<span class="number">60</span>*<span class="number">60</span>*<span class="number">1000</span>));</span><br><span class="line">    <span class="keyword">var</span> expires = <span class="string">"expires="</span>+ d.toUTCString();</span><br><span class="line">    <span class="built_in">document</span>.cookie = cname + <span class="string">"="</span> + cvalue + <span class="string">";"</span> + expires + <span class="string">";path=/"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getCookie</span>(<span class="params">cname</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> name = cname + <span class="string">"="</span>;</span><br><span class="line">    <span class="keyword">var</span> decodedCookie = <span class="built_in">decodeURIComponent</span>(<span class="built_in">document</span>.cookie);</span><br><span class="line">    <span class="keyword">var</span> ca = decodedCookie.split(<span class="string">';'</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt;ca.length; i++) &#123;</span><br><span class="line">        <span class="keyword">var</span> c = ca[i];</span><br><span class="line">        <span class="keyword">while</span> (c.charAt(<span class="number">0</span>) == <span class="string">' '</span>) &#123;</span><br><span class="line">            c = c.substring(<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (c.indexOf(name) == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> c.substring(name.length, c.length);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechatpay.jpg" alt="王君吉 WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/interview/" rel="tag">#interview</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/27/Webpack实战——静态html框架＋实时刷新/" rel="next" title="Webpack实战——静态html框架＋实时刷新＋mock server">
+                <i class="fa fa-chevron-left"></i> Webpack实战——静态html框架＋实时刷新＋mock server
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/05/26/Webpack打包音频和视频文件/" rel="prev" title="Webpack打包音频和视频文件">
+                Webpack打包音频和视频文件 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/05/03/前端面试题整理/"
+           data-title="前端面试题整理" data-url="http://yoursite.com/2017/05/03/前端面试题整理/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="王君吉" />
+          <p class="site-author-name" itemprop="name">王君吉</p>
+          <p class="site-description motion-element" itemprop="description">不积跬步，无以至千里</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/wangjunji" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/1863673592" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HTML篇"><span class="nav-number">1.</span> <span class="nav-text">HTML篇</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CSS篇"><span class="nav-number">2.</span> <span class="nav-text">CSS篇</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#如何创建块级格式化上下文-block-formatting-context-BFC有什么用"><span class="nav-number">2.1.</span> <span class="nav-text">如何创建块级格式化上下文(block formatting context),BFC有什么用?</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JS篇"><span class="nav-number">3.</span> <span class="nav-text">JS篇</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#跨域通信"><span class="nav-number">3.1.</span> <span class="nav-text">跨域通信</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么闭包-闭包有什么用"><span class="nav-number">3.2.</span> <span class="nav-text">什么闭包,闭包有什么用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#XMLHttpRequest通用属性和方法"><span class="nav-number">3.3.</span> <span class="nav-text">XMLHttpRequest通用属性和方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cookie及其操作"><span class="nav-number">3.4.</span> <span class="nav-text">cookie及其操作</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">王君吉</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"wangjunji"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
