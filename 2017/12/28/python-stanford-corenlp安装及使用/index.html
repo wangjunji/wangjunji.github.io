@@ -84,20 +84,20 @@
 
 
 
-<meta name="description" content="1. 新建工作目录   mkdir workspace &amp;amp;&amp;amp; cd $_ 2. 创建virtualenv隔离环境   virtualenv -p python3 .corenlp-env 3. 下载Corenlp核心包及中文语言包      CoreNLP V3.8.0 核心包下载   下载后解压      CoreNLP V3.8.0 中文语言包下载   语言包下载后解压到sta">
+<meta name="description" content="本文介绍了如何配置Corenlp的python接口，并支持中文分词">
 <meta name="keywords" content="自然语言处理">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python-stanford-corenlp安装及使用">
 <meta property="og:url" content="http://yoursite.com/2017/12/28/python-stanford-corenlp安装及使用/index.html">
 <meta property="og:site_name" content="Junji&#39;s Blog">
-<meta property="og:description" content="1. 新建工作目录   mkdir workspace &amp;amp;&amp;amp; cd $_ 2. 创建virtualenv隔离环境   virtualenv -p python3 .corenlp-env 3. 下载Corenlp核心包及中文语言包      CoreNLP V3.8.0 核心包下载   下载后解压      CoreNLP V3.8.0 中文语言包下载   语言包下载后解压到sta">
+<meta property="og:description" content="本文介绍了如何配置Corenlp的python接口，并支持中文分词">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2017/12/28/python-stanford-corenlp安装及使用/corenlp-download.png">
 <meta property="og:image" content="http://yoursite.com/2017/12/28/python-stanford-corenlp安装及使用/corenlp-download-2.png">
-<meta property="og:updated_time" content="2017-12-28T12:58:50.000Z">
+<meta property="og:updated_time" content="2017-12-29T05:17:35.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python-stanford-corenlp安装及使用">
-<meta name="twitter:description" content="1. 新建工作目录   mkdir workspace &amp;amp;&amp;amp; cd $_ 2. 创建virtualenv隔离环境   virtualenv -p python3 .corenlp-env 3. 下载Corenlp核心包及中文语言包      CoreNLP V3.8.0 核心包下载   下载后解压      CoreNLP V3.8.0 中文语言包下载   语言包下载后解压到sta">
+<meta name="twitter:description" content="本文介绍了如何配置Corenlp的python接口，并支持中文分词">
 <meta name="twitter:image" content="http://yoursite.com/2017/12/28/python-stanford-corenlp安装及使用/corenlp-download.png">
 
 
@@ -283,7 +283,8 @@
       
 
       
-        <h4 id="1-新建工作目录"><a href="#1-新建工作目录" class="headerlink" title="1. 新建工作目录"></a>1. 新建工作目录</h4>   <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkdir workspace &amp;&amp; <span class="built_in">cd</span> <span class="variable">$_</span></span><br></pre></td></tr></table></figure>
+        <p>本文介绍了如何配置Corenlp的python接口，并支持中文分词<br><a id="more"></a></p>
+<h4 id="1-新建工作目录"><a href="#1-新建工作目录" class="headerlink" title="1. 新建工作目录"></a>1. 新建工作目录</h4>   <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkdir workspace &amp;&amp; <span class="built_in">cd</span> <span class="variable">$_</span></span><br></pre></td></tr></table></figure>
 <h4 id="2-创建virtualenv隔离环境"><a href="#2-创建virtualenv隔离环境" class="headerlink" title="2. 创建virtualenv隔离环境"></a>2. 创建virtualenv隔离环境</h4>   <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">virtualenv -p python3 .corenlp-env</span><br></pre></td></tr></table></figure>
 <h4 id="3-下载Corenlp核心包及中文语言包"><a href="#3-下载Corenlp核心包及中文语言包" class="headerlink" title="3. 下载Corenlp核心包及中文语言包"></a>3. 下载Corenlp核心包及中文语言包</h4><p>   <img src="corenlp-download.png" alt="下载corenlp"><br>   <a href="http://nlp.stanford.edu/software/stanford-corenlp-full-2017-06-09.zip" target="_blank" rel="noopener">CoreNLP V3.8.0 核心包下载</a><br>   下载后解压<br>   <img src="corenlp-download-2.png" alt="下载corenlp"><br>   <a href="http://nlp.stanford.edu/software/stanford-corenlp-full-2017-06-09.zip" target="_blank" rel="noopener">CoreNLP V3.8.0 中文语言包下载</a><br>   语言包下载后解压到<code>stanford-corenlp-full-2017-06-09／</code>根目录下</p>
 <h4 id="4-安装python-stanford-corenlp"><a href="#4-安装python-stanford-corenlp" class="headerlink" title="4. 安装python-stanford-corenlp"></a>4. 安装python-stanford-corenlp</h4>   <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install stanford-corenlp</span><br></pre></td></tr></table></figure>
